@@ -15,11 +15,11 @@
   
 
   
-    <meta name="description" content="置顶" />
+    <meta name="description" content="无向图的邻接表存储" />
   
   
   <link rel="icon" type="image/x-icon" href="/logo.png">
-  <title>置顶 [ 沉睡的狮子 ]</title>
+  <title>无向图的邻接表存储 [ 沉睡的狮子 ]</title>
   
     <!-- stylesheets list from config.yml -->
     
@@ -76,12 +76,12 @@
   <article class="post" id="post">
     <header class="post-header text-center">
       <h1 class="title">
-        置顶
+        无向图的邻接表存储
       </h1>
       <span>
         
-        <time class="time" datetime="2018-04-15T03:55:48.000Z">
-        2018-04-15
+        <time class="time" datetime="2018-04-22T02:52:05.000Z">
+        2018-04-22
       </time>
         
       </span>
@@ -99,12 +99,7 @@
     </header>
 
     <div class="post-content">
-      <ul>
-<li>又一天过去了。今天过得怎么样，梦想是不是更远了？</li>
-<li>最靠得住的是金钱，最靠不住的是人心。</li>
-<li>对今天解决不了的事情，也不必着急。因为明天还是解决不了。</li>
-<li>你只需看着别人精彩，老天对你另有安排。</li>
-</ul>
+      <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">#define OK 1;</span><br><span class="line">#define MAX_NUM 20;</span><br><span class="line"></span><br><span class="line">typedef int Status;</span><br><span class="line">typedef int QElemType;</span><br><span class="line">typedef int VexType;</span><br><span class="line"></span><br><span class="line">// 邻接表存储结构</span><br><span class="line">// 边结点</span><br><span class="line">typedef struct EdgeNode</span><br><span class="line">&#123;</span><br><span class="line">	int adjvex; // 顶点的位置</span><br><span class="line">	struct EdgeNode *next; // 指向下一条边的指针</span><br><span class="line">&#125; EdgeNode, *EdgeLink;</span><br><span class="line">// 顶点结点</span><br><span class="line">typedef struct VexNode</span><br><span class="line">&#123;</span><br><span class="line">	VexType data; // 顶点数据</span><br><span class="line">	EdgeNode *firstEdge; // 指向第一条依附该顶点的边的指针</span><br><span class="line">&#125; VexNode, AdjList[20];</span><br><span class="line">// 图</span><br><span class="line">typedef struct</span><br><span class="line">&#123;</span><br><span class="line">	AdjList adjList;</span><br><span class="line">	int vexNum, edgeNum; // 顶点数和边数</span><br><span class="line">&#125; ALGraph;</span><br><span class="line"></span><br><span class="line">// 队列存储结构（用于图的遍历）</span><br><span class="line">typedef struct QNode</span><br><span class="line">&#123;</span><br><span class="line">	QElemType data; // 结点的数据</span><br><span class="line">	struct QNode *next; // 指向下一个结点</span><br><span class="line">&#125; QNode, *QueuePtr;</span><br><span class="line">typedef struct </span><br><span class="line">&#123;</span><br><span class="line">	QueuePtr front; // 队头指针</span><br><span class="line">	QueuePtr rear; // 队尾指针</span><br><span class="line">&#125; LinkQueue;</span><br><span class="line"></span><br><span class="line">// 创建图</span><br><span class="line">Status CreateGraph(ALGraph *G)</span><br><span class="line">&#123;</span><br><span class="line">	int i, j, k;</span><br><span class="line">	EdgeLink e;</span><br><span class="line">	printf(&quot;请输入顶点数目和边数：\n&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;(G-&gt;vexNum));</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;(G-&gt;edgeNum));</span><br><span class="line"></span><br><span class="line">	printf(&quot;请输入各顶点的数据：\n&quot;);</span><br><span class="line">	for (i = 0; i &lt; G-&gt;vexNum; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		scanf(&quot;%c&quot;, &amp;(G-&gt;adjList[i].data));</span><br><span class="line">		// 回车时继续</span><br><span class="line">		if (G-&gt;adjList[i].data == &apos;\n&apos;) </span><br><span class="line">		&#123;</span><br><span class="line">			i--;</span><br><span class="line">			continue;</span><br><span class="line">		&#125;</span><br><span class="line">		G-&gt;adjList[i].firstEdge = NULL;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;请依次输入边&lt;Vi,Vj&gt;的顶点序号：\n&quot;);</span><br><span class="line">	for(k = 0; k &lt; G-&gt;edgeNum; k++)</span><br><span class="line">	&#123;</span><br><span class="line">		scanf(&quot;%d&quot;, &amp;i);</span><br><span class="line">		scanf(&quot;%d&quot;, &amp;j);</span><br><span class="line">		e = (EdgeLink) malloc(sizeof(EdgeNode)); // 初始化一个边结点</span><br><span class="line">		e-&gt;adjvex = j; // 顶点位置</span><br><span class="line">		e-&gt;next = G-&gt;adjList[i].firstEdge; // 指向下一条边的指针</span><br><span class="line">		G-&gt;adjList[i].firstEdge = e;</span><br><span class="line"></span><br><span class="line">		e = (EdgeLink) malloc(sizeof(EdgeNode)); // 初始化一个边结点</span><br><span class="line">		e-&gt;adjvex = i; // 顶点位置</span><br><span class="line">		e-&gt;next = G-&gt;adjList[j].firstEdge; // 指向下一条边的指针</span><br><span class="line">		G-&gt;adjList[j].firstEdge = e;</span><br><span class="line">	&#125;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -126,15 +121,15 @@
     <div class="post-nav">
       <div class="post-nav-item post-nav-next">
         
+          <span>〈 </span>
+          <a href="/2018/04/21/二叉树/" rel="next" title="二叉树">
+          二叉树
+          </a>
+        
       </div>
   
       <div class="post-nav-item post-nav-prev">
           
-          <a href="/2018/04/21/LinkList/" rel="prev" title="LinkList">
-            LinkList
-          </a>
-          <span>〉</span>
-        
       </div>
     </div>
   
@@ -148,7 +143,7 @@
   <script>
     var disqus_shortname = 'your-disqus-shortname';
     
-    var disqus_url = 'https://blog.fomeiherz.top/2018/04/15/置顶/';
+    var disqus_url = 'https://blog.fomeiherz.top/2018/04/22/无向图的邻接表存储/';
     
     (function(){
       var dsq = document.createElement('script');
