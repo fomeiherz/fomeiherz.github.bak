@@ -11,15 +11,15 @@
   <script src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
   
   
-    <meta name="keywords" content="数据结构,二叉树,链式结构," />
+    <meta name="keywords" content="" />
   
 
   
-    <meta name="description" content="二叉树" />
+    <meta name="description" content="线性表的链式存储结构" />
   
   
   <link rel="icon" type="image/x-icon" href="/logo.png">
-  <title>二叉树 [ 沉睡的狮子 ]</title>
+  <title>线性表的链式存储结构 [ 沉睡的狮子 ]</title>
   
     <!-- stylesheets list from config.yml -->
     
@@ -76,11 +76,11 @@
   <article class="post" id="post">
     <header class="post-header text-center">
       <h1 class="title">
-        二叉树
+        线性表的链式存储结构
       </h1>
       <span>
         
-        <time class="time" datetime="2018-04-21T12:31:22.000Z">
+        <time class="time" datetime="2018-04-21T02:51:57.000Z">
         2018-04-21
       </time>
         
@@ -88,7 +88,7 @@
       <span class="slash">/</span>
       <span class="post-meta">
       <span class="post-tags">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉树/">二叉树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/链式结构/">链式结构</a></li></ul>
+        
       </span>
     </span>
       <span class="slash">/</span>
@@ -99,7 +99,7 @@
     </header>
 
     <div class="post-content">
-      <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">#define OK 1</span><br><span class="line">#define OVERFLOW -2</span><br><span class="line"></span><br><span class="line">typedef int TElemType;</span><br><span class="line">typedef int Status;</span><br><span class="line"></span><br><span class="line">// 存储结构</span><br><span class="line">typedef struct BiTNode</span><br><span class="line">&#123;</span><br><span class="line">	TElemType data;</span><br><span class="line">	struct BiTNode *lchild, *rchild; // 左子树  右子树</span><br><span class="line">&#125; BiTNode, *BiTree;</span><br><span class="line"></span><br><span class="line">// 初始化一颗树</span><br><span class="line">// 问题：如何理解**T参数呢</span><br><span class="line">Status CreateBiTree(BiTree *T)</span><br><span class="line">&#123;</span><br><span class="line">	BiTree p = *T;</span><br><span class="line">	TElemType e;</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;e);</span><br><span class="line">	// 输入一个数 </span><br><span class="line">	if (e == 0) </span><br><span class="line">	&#123;</span><br><span class="line">		p = NULL;</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		p = (BiTree) malloc(sizeof(BiTNode));</span><br><span class="line">		if (!p) </span><br><span class="line">		&#123;</span><br><span class="line">			return OVERFLOW;</span><br><span class="line">		&#125;</span><br><span class="line">		p-&gt;data = e;</span><br><span class="line">		// 左子树的地址的地址</span><br><span class="line">		CreateBiTree(&amp;(p-&gt;lchild)); // 创建左子树</span><br><span class="line">		CreateBiTree(&amp;(p-&gt;rchild)); // 创建右子树</span><br><span class="line">	&#125;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	BiTree T;</span><br><span class="line">	CreateBiTree(&amp;T);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">#include &lt; stdio.h &gt; </span><br><span class="line">#include &lt; stdlib.h &gt;</span><br><span class="line"></span><br><span class="line">#define OVERFLOW -2</span><br><span class="line">#define ERROR 0</span><br><span class="line">#define OK 1</span><br><span class="line"></span><br><span class="line">#define ElemType int</span><br><span class="line">#define Status int</span><br><span class="line"></span><br><span class="line">// 存储结构</span><br><span class="line">typedef struct LNode &#123;</span><br><span class="line">    ElemType data; // 数据域</span><br><span class="line">    struct LNode * next; // 指针域，下一个结点的指针</span><br><span class="line">&#125;</span><br><span class="line">LNode, *LinkList;</span><br><span class="line"></span><br><span class="line">// 初始化线性表</span><br><span class="line">void InitList(LinkList * L) &#123;</span><br><span class="line">    // 线性表L的指针指向第一个元素</span><br><span class="line">    * L = (LinkList) malloc(sizeof(LNode)); // 申请一个结点的空间</span><br><span class="line">    if (!L) &#123;</span><br><span class="line">        exit(OVERFLOW);</span><br><span class="line">    &#125; (*L) - &gt;next = NULL; // 新链表的下一个元素指向NULL</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 插入元素</span><br><span class="line">Status InsertElem(LinkList L, int i, ElemType e) &#123;</span><br><span class="line">    int j = 0;</span><br><span class="line">    LinkList s;</span><br><span class="line">    LinkList p = L;</span><br><span class="line">    // p不为空</span><br><span class="line">    while (p &amp;&amp; j &lt; i - 1) &#123;</span><br><span class="line">        // 通过头指针去逐个遍历，找出i的位置</span><br><span class="line">        j++;</span><br><span class="line">        p = p - &gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    if (!p || j &gt; i - 1) &#123;</span><br><span class="line">        return ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    s = (LinkList) malloc(sizeof(LNode)); // 新增一个结点</span><br><span class="line">    s - &gt;data = e;</span><br><span class="line">    s - &gt;next = p - &gt;next;</span><br><span class="line">    p - &gt;next = s;</span><br><span class="line">    return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 遍历线性表</span><br><span class="line">void TraverseList(LinkList L) &#123;</span><br><span class="line">    LinkList p = L - &gt;next;</span><br><span class="line">    while (p) &#123;</span><br><span class="line">        printf(&quot;%d\t&quot;, p - &gt;data);</span><br><span class="line">        p = p - &gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    LinkList L;</span><br><span class="line">    InitList(&amp;L);</span><br><span class="line"></span><br><span class="line">    InsertElem(L, 1, 10);</span><br><span class="line">    TraverseList(L);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -121,17 +121,12 @@
     <div class="post-nav">
       <div class="post-nav-item post-nav-next">
         
-          <span>〈 </span>
-          <a href="/2018/04/21/线性表的链式存储结构/" rel="next" title="线性表的链式存储结构">
-          线性表的链式存储结构
-          </a>
-        
       </div>
   
       <div class="post-nav-item post-nav-prev">
           
-          <a href="/2018/04/22/无向图的邻接表存储/" rel="prev" title="无向图的邻接表存储">
-            无向图的邻接表存储
+          <a href="/2018/04/21/二叉树/" rel="prev" title="二叉树">
+            二叉树
           </a>
           <span>〉</span>
         
@@ -148,7 +143,7 @@
   <script>
     var disqus_shortname = 'your-disqus-shortname';
     
-    var disqus_url = 'https://blog.fomeiherz.top/2018/04/21/二叉树/';
+    var disqus_url = 'https://blog.fomeiherz.top/2018/04/21/线性表的链式存储结构/';
     
     (function(){
       var dsq = document.createElement('script');
