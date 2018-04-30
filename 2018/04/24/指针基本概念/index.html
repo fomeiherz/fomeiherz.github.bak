@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+
+<!-- pageTitle += config.title + ' | '; -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="" />
+  
+
+  
+    <meta name="description" content="指针基本概念" />
+  
+  
+  <link rel="icon" type="image/x-icon" href="/logo.png">
+  <title>指针基本概念</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+</head>
+
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="https://blog.fomeiherz.top/images/logo.png">
+    <span class="title">沉睡的狮子</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="" class="pure-menu-link">关于</a></li>
+          
+      
+  </ul>
+   
+</nav>
+
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        指针基本概念
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2018-04-24T13:58:37.000Z">
+        2018-04-24
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+    </header>
+
+    <div class="post-content">
+      <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">// 指针的基本定义</span><br><span class="line">void PointerDefine()</span><br><span class="line">&#123;</span><br><span class="line">    // 指针变量存放的另一种变量的地址</span><br><span class="line">    int a1 = 100;</span><br><span class="line">    int a2 = 20;</span><br><span class="line">    // 定义整形数据的指针变量</span><br><span class="line">    int *p1, *p2;</span><br><span class="line">    // 把指针p1指向a1变量</span><br><span class="line">    p1 = &amp;a1;</span><br><span class="line">    p2 = &amp;a2;</span><br><span class="line"></span><br><span class="line">    printf(&quot;%p, %p\n&quot;, p1, p2); // 输出a1，a2所在内存中的地址</span><br><span class="line">    printf(&quot;%d, %d\n&quot;, *p1, *p2); // 输出p1，p2指向变量对应的值</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 编写程序，输入2个整数，按先大后小的顺序输出a和b</span><br><span class="line">// 思路：用指针的方法处理这个问题，不交换整形变量的值，而是交换指针变量的值</span><br><span class="line">void SwitchPointer()</span><br><span class="line">&#123;</span><br><span class="line">    int a, b;</span><br><span class="line">    printf(&quot;请输入2个整数：&quot;);</span><br><span class="line">    scanf(&quot;%d %d&quot;, &amp;a, &amp;b);</span><br><span class="line"></span><br><span class="line">    int *pa = &amp;a, *pb = &amp;b;</span><br><span class="line">    if (*pa &lt; *pb) </span><br><span class="line">    &#123;</span><br><span class="line">        int *p = pa;</span><br><span class="line">        pa = pb;</span><br><span class="line">        pb = p;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;由大到小输出2个值：%d  %d&quot;, *pa, *pb);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 指针变量作为函数参数。作用是将一个变量的地址传送到另一个函数中</span><br><span class="line">// 通过指针变量的传入，可以改变指针所指向的变量的值</span><br><span class="line">void Swap(int *p1, int *p2)</span><br><span class="line">&#123;</span><br><span class="line">    // 交换指针所指向变量的值</span><br><span class="line">    int temp = *p1;</span><br><span class="line">    *p1 = *p2;</span><br><span class="line">    *p2 = temp;</span><br><span class="line">&#125;</span><br><span class="line">// 打印交换前和交换后的值</span><br><span class="line">void PrintSwap()</span><br><span class="line">&#123;</span><br><span class="line">    int a = 111, b = 222;</span><br><span class="line">    printf(&quot;交换前，a = %d，b = %d\n&quot;, a, b);</span><br><span class="line">    Swap(&amp;a, &amp;b);</span><br><span class="line">    printf(&quot;交换后，a = %d，b = %d\n&quot;, a, b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 输入3个整数a、b、c，要求按从大到小的顺序将他们输出，用函数实现</span><br><span class="line">// 用exchange函数改变这3个变量的值，用swap函数交换2个变量的值</span><br><span class="line">void exchange(int *p1, int *p2, int *p3)</span><br><span class="line">&#123;</span><br><span class="line">    if (*p1 &lt; *p2)</span><br><span class="line">    &#123;</span><br><span class="line">        Swap(p1, p2);</span><br><span class="line">    &#125;</span><br><span class="line">    if (*p1 &lt; *p3) </span><br><span class="line">    &#123;</span><br><span class="line">        Swap(p1, p3);</span><br><span class="line">    &#125;</span><br><span class="line">    if (*p2 &lt; *p3) </span><br><span class="line">    &#123;</span><br><span class="line">        Swap(p2, p3);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    int a = 2, b = 2, c = 3;</span><br><span class="line">    exchange(&amp;a, &amp;b, &amp;c);</span><br><span class="line">    printf(&quot;从大到小：%d  %d  %d\n&quot;, a, b, c);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+  </article>
+  <div class="toc-container">
+    
+
+  </div>
+</div>
+<div class="copyright">
+    <span>本作品采用</span>
+    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+  
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2018/04/24/插入排序（含希尔排序）/" rel="next" title="插入排序（含希尔排序）">
+          插入排序（含希尔排序）
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2018/04/24/直接选择排序/" rel="prev" title="直接选择排序">
+            直接选择排序
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="https://blog.fomeiherz.top">首页</a> |
+        <a class="bottom-item" href="https://blog.fomeiherz.top" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/fomeiherz" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a> | 
+        <a class="bottom-item" href="https://github.com/microacup/hexo-theme-micorb" target="_blank">Theme micorb</a>
+    </div>
+</footer>
+
+  
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>
