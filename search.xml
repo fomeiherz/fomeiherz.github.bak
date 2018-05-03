@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Lucene全文检索工具]]></title>
+    <url>%2F2018%2F05%2F03%2FLucene%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2%E5%B7%A5%E5%85%B7%2F</url>
+    <content type="text"><![CDATA[Lucene是基于Java的全文信息检索工具包。 索引创建与检索创建索引 需要检索的数据(Document) 分词技术(Analyzer) 索引创建(Indexer) 索引检索 搜索关键词(keywords) 分词技术 (Analyzer) 检索索引(Search) 返回结果 Lucene文件结构 索引(Index)：一个索引放在一个文件夹中。 段(Segment)：一个索引中可以有很多段，段与段之间是独立的，添加新的文档可以产生新段，不同的段可以合并成一个新段。 文档(Document)：文档是创建索引的基本单位，不同的文档保存在不同的段中，一个段可以包含多个文档。 域(Field)：一个文档包含不同类型的信息，可以拆分开索引。 词(Term)：词是索引的最小单位，是经过词法分析和语言处理后的数据。 正向信息就是按层次保存了索引一直到词的包含关系：索引 &gt; 段 &gt; 文档 &gt; 域 &gt; 词反向信息：词 &gt; 文档 其他Lucene索引查看工具：Luke]]></content>
+      <tags>
+        <tag>全文检索</tag>
+        <tag>lucene</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[栈]]></title>
+    <url>%2F2018%2F05%2F02%2F%E6%A0%88%2F</url>
+    <content type="text"><![CDATA[123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#define INIT_SIZE 10#define INCREAME 10typedef char SElemType;// 存储结构typedef struct Stack&#123; char* base; // 底部指针 char* top; // 顶部指针 int size; // 长度&#125; Stack;// 初始化栈int InitStack(Stack *S)&#123; S-&gt;base = S-&gt;top = (SElemType *)malloc(sizeof(SElemType) * INIT_SIZE); if (!S-&gt;base) &#123; return -2; &#125; S-&gt;size = INIT_SIZE; return 1;&#125;// 插入元素int Push(Stack *S, SElemType e)&#123; int length = (S-&gt;top - S-&gt;base) / sizeof(SElemType); SElemType * p; if (length &gt;= S-&gt;size) &#123; p = (SElemType *)realloc(S-&gt;base, sizeof(SElemType) * (S-&gt;size + INCREAME)); if (!p) &#123; return -2; &#125; S-&gt;base = p; S-&gt;top = S-&gt;base + S-&gt;size; // 修改顶部指针指向新的位置 S-&gt;size += INCREAME; &#125; *(S-&gt;top) = e; (S-&gt;top)++; return 1;&#125;// 打印// 直接传值，不会改变Svoid Print(Stack S)&#123; while (S.base &lt;= S.top) &#123; printf(&quot;%c&quot;, *(S.base)); S.base++; &#125;&#125;int main()&#123; Stack S; InitStack(&amp;S); Push(&amp;S, &apos;1&apos;); Push(&amp;S, &apos;2&apos;); Push(&amp;S, &apos;3&apos;); Push(&amp;S, &apos;4&apos;); Push(&amp;S, &apos;5&apos;); Push(&amp;S, &apos;6&apos;); Push(&amp;S, &apos;7&apos;); Push(&amp;S, &apos;8&apos;); Push(&amp;S, &apos;9&apos;); Push(&amp;S, &apos;0&apos;); Push(&amp;S, &apos;A&apos;); Print(S); return 0;&#125;]]></content>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[T-SQL语法示例]]></title>
+    <url>%2F2018%2F05%2F02%2FT-SQL%E8%AF%AD%E6%B3%95%E7%A4%BA%E4%BE%8B%2F</url>
+    <content type="text"><![CDATA[创建库123456789101112131415161718192021222324&lt;begin&gt;--创建数据库use master --使用SQL原有模板master进行创建go--创建一个名为yy_db的数据库，数据库命名最好添加_dbcreate database yy_db --数据文件的具体描述on primary ( name=&apos;yy_db.mdf&apos;, --创建主文件名字，名字要与数据库名字一样 filename=&apos;D:\Twins\Database\File\yy_db.mdf&apos;, --保存路径 size=3MB, --初始文件大小 --maxsize=60MB,最大限制 filegrowth=1MB --空间不足时，自动增长)--日志文件的具体描述log on ( name=&apos;yy_db.ldf&apos;, --创建日志文件名字 filename=&apos;D:\Twins\Database\File\yy_db.ldf&apos;, --保存路径 size=1MB, --初始文件大小 filegrowth=10% --空间不足，自动增长)&lt;end&gt; 创建表1234567891011121314151617181920212223242526272829303132333435363738394041424344454647--指定插入表格的数据库use yy_dbgo--创建一个表格，表格名字应该带有_tb后缀create table info_tb( --创建一个标识列和主键 Id int not null identity(1,1) constraint pk_info primary key, --创建一个唯一键，学生名字 Name nvarchar(20) not null --属于约束之一，应该起个名字 constraint un_info unique, --唯一单词unique --创建一个地址栏，默认是&quot;广州&quot;，允许为空 Address nvarchar(30) null --属于默认约束，应该命名 constraint df_Address default &apos;广州&apos;, --创建一个Email邮箱的，允许为空 Email nvarchar(30) null --属于约束中的一种，加上constraint constraint ck_Email --约束语句check(条件) check(Email like &apos;%@%[.com .cn]&apos;))create table score_tb ( --表格名字一定要加_tb id int not null identity (1,1) constraint pk_Id primary key , --创建一个外键 infoId int not null --命名外键名称 constraint fk_infoId --创建外键foreign key references 表名(列名) --引用是复数：references foreign key references info_tb(id), score float not null --创建检查约束 constraint ck_score check (score&gt;=0 and score&lt;=100),) 插入数据123456789--插入(insert)单行数据insert into info_tb (Name,Address,Email)values (&apos;张三&apos;,default,&apos;123@qq.com&apos;)--插入多行数据（微软官网）insert into info_tb (Name,Address,Email)values (&apos;李四&apos;,&apos;杭州&apos;,&apos;2345@qq.com&apos;), --逗号分隔，继续下一行数据(&apos;王五&apos;,&apos;武汉&apos;,&apos;3456@qq.com&apos;) 更新数据123--更改(update)数据update info_tb set Email=&apos;5678@qq.com&apos;where Email=&apos;123@qq.com&apos; 删除数据12--删除数据delete info_tb where Id=1 清空数据12--清空数据(truncate table)truncate table score_tb]]></content>
+      <tags>
+        <tag>T-SQL</tag>
+        <tag>sql server</tag>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[golang的命名规范]]></title>
+    <url>%2F2018%2F05%2F02%2Fgolang%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83%2F</url>
+    <content type="text"><![CDATA[类变量函数公有函数的名字以大写字母开头；私有函数的名字以小写字母开头。]]></content>
+      <tags>
+        <tag>goland</tag>
+        <tag>命名规范</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[golang入门过程遇到各种坑]]></title>
+    <url>%2F2018%2F05%2F02%2Fgolang%E5%85%A5%E9%97%A8%E8%BF%87%E7%A8%8B%E9%81%87%E5%88%B0%E5%90%84%E7%A7%8D%E5%9D%91%2F</url>
+    <content type="text"><![CDATA[1、go get xxx报错 unrecognized import path “golang.org/x/net/context”解决问题：http://www.jyguagua.com/?p=30082、连接数据库报错信息123452018/05/02 13:12:36 http: panic serving 127.0.0.1:60012: runtime error: invalid memory address or nil pointer dereferencegoroutine 6 [running]:net/http.(*conn).serve.func1(0xc042050820) G:/Go/src/net/http/server.go:1726 +0xd7... 可能的解决方案： 方案一：新增导入包 import (_ “github.com/go-sql-driver/mysql”) 方案二：检查数据库配置信息是否正确（用户名、密码等）]]></content>
+      <tags>
+        <tag>golang</tag>
+        <tag>go</tag>
+        <tag>入门</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[使用IntelliJ IDEA + Go插件快速搭建第一个Web程序]]></title>
+    <url>%2F2018%2F05%2F01%2Fidea-go-plugin-with-web%2F</url>
+    <content type="text"><![CDATA[配置golang环境配置本地仓库本地新建一个仓库：E:\go\Repository\src配置GOPATH路径为：E:\go\Repository（注意：不用配置 \src） 配置项目路径本地新建项目路径：E:\work_golang\src配置GOPATH路径为：E:\work_golang（注意：不用配置 \src）作用：配置了该路径项目才可以引用本地的包。 IntelliJ IDEA安装Golang插件注：可能低版本的IDEA不支持该插件，需要安装更新版本才能搜索到这个插件。IDEA安装Go插件 创建第一个Web项目环境描述 Windows 7 IntelliJ IDEA 2018.03 IDEA创建项目第一步：创建一个Go项目第二步：把项目代码替换成Web程序代码第三步：访问地址 http://localhost:8080/ 查看结果即可 部署程序Windows打包linux程序参考链接：https://blog.csdn.net/panshiqu/article/details/537880671234SET CGO_ENABLED=0SET GOOS=linuxSET GOARCH=amd64go build -o &lt;out_file&gt; &lt;main_file&gt; linux安装Go环境参考链接：https://medium.com/@patdhlk/how-to-install-go-1-9-1-on-ubuntu-16-04-ee64c073cd79 linux修改为可执行文件chmod +x &lt;file_name&gt;]]></content>
+      <tags>
+        <tag>golang</tag>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[自考中大数据结构的实践课程【归档】]]></title>
+    <url>%2F2018%2F04%2F30%2F%E8%87%AA%E8%80%83%E4%B8%AD%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84%E5%AE%9E%E8%B7%B5%E8%AF%BE%E7%A8%8B%E3%80%90%E5%BD%92%E6%A1%A3%E3%80%91%2F</url>
+    <content type="text"><![CDATA[【线性表】 线性表的顺序存储 线性表的链式存储结构 【栈】 栈 【队列】 循环队列 【树】 二叉树 【图】 无向图的邻接表存储 【查找】 二分法查找 【排序】 冒泡排序（含快速排序） 插入排序（含希尔排序） 选择排序 归并排序 基数排序 桶排序（箱排序） 计数排序]]></content>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>归档</tag>
+        <tag>自考</tag>
+        <tag>中山大学</tag>
+        <tag>计算机及应用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[计数排序]]></title>
+    <url>%2F2018%2F04%2F30%2F%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%2F</url>
+    <content type="text"><![CDATA[基本概念 计数排序 (Counting sort)是一种算法复杂度O(n)的排序方法，适合于小范围集合的排序。 案例分析假设我们有[1,2,3,1,0,4]这6个数，范围是0~4，我们就取出5个箱子，箱子的编号就是代表原数组的元素。分配数字到各个箱子。分配完了后，0号箱有1个元素；1号箱有2个元素，2号箱有1个元素，2号箱有1个元素，4号箱有1个元素。然后依次取出箱的元素，放在新的数组，排序结束。]]></content>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[桶排序（箱排序）]]></title>
+    <url>%2F2018%2F04%2F30%2F%E6%A1%B6%E6%8E%92%E5%BA%8F%EF%BC%88%E7%AE%B1%E6%8E%92%E5%BA%8F%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[算法原理桶排序(Bucket sort)或所谓的箱排序的原理是将数组分到有限数量的桶子里边，然后对每个桶再分别排序，最后将各个桶的数据有序的合并起来。 视频图解链接：https://www.cs.usfca.edu/~galles/visualization/BucketSort.html 案例分析设有数组[29, 25, 3, 49, 9, 37, 21, 43]，那么数组中最大数为 49，可以设置5个桶，那么每个桶可存放数的范围为：0~9、10~19、20~29、30~39、40~49。然后分别将这些数放人自己所属的桶，如下图所示。]]></content>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[线性表的顺序存储]]></title>
+    <url>%2F2018%2F04%2F27%2F%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%2F</url>
+    <content type="text"><![CDATA[123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#define INIT_SIZE 10#define INCREASE_SIZE 5typedef int DataType;// 线性表的顺序存储结构typedef struct&#123; DataType *data; // 元素数组 int size; // 分配的长度 int length; // 当前长度&#125;SqList;// 初始化线性表int InitList(SqList *L)&#123; L-&gt;data = (DataType*)malloc(INIT_SIZE * sizeof(DataType)); if (!L-&gt;data) &#123; return -1; &#125; L-&gt;size = INIT_SIZE; L-&gt;length = 0; return 1;&#125;// 在第i个位置插入元素int InsertElem(SqList *L, int i, DataType e)&#123; if (i &lt;= 0) &#123; return -1; &#125; // 顺序表已满 if (L-&gt;length &gt;= L-&gt;size) &#123; // 重新申请空间 // realloc(源地址, 新的空间) DataType* newList; newList = (DataType*)realloc(L-&gt;data, (L-&gt;length + INCREASE_SIZE) * sizeof(DataType)); if (!L-&gt;data) &#123; return -1; &#125; L-&gt;data = newList; // 修改分配的长度 L-&gt;size = L-&gt;length + INCREASE_SIZE; &#125; // 在第i个位置插入 // i从1开始的，不是从0 i = i - 1; for (int j = L-&gt;length - 1; j &gt;= i; j--) &#123; // 移动元素 L-&gt;data[j + 1] = L-&gt;data[j]; &#125; L-&gt;data[i] = e; L-&gt;length++; return 1;&#125;int main()&#123; SqList L; InitList(&amp;L); InsertElem(&amp;L, 1, 1); InsertElem(&amp;L, 1, 2); InsertElem(&amp;L, 1, 3); InsertElem(&amp;L, 1, 4); InsertElem(&amp;L, 1, 5); InsertElem(&amp;L, 1, 5); InsertElem(&amp;L, 1, 5); InsertElem(&amp;L, 1, 5); InsertElem(&amp;L, 1, 5); InsertElem(&amp;L, 1, 5); InsertElem(&amp;L, 1, 5); InsertElem(&amp;L, 1, 5); InsertElem(&amp;L, 1, 1); InsertElem(&amp;L, 1, 2); InsertElem(&amp;L, 1, 3); InsertElem(&amp;L, 1, 4); for (int i = 0; i &lt; L.length; i++) &#123; printf(&quot;%d &quot;, L.data[i]); &#125; return 0;&#125;]]></content>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[循环队列]]></title>
+    <url>%2F2018%2F04%2F27%2F%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%2F</url>
+    <content type="text"><![CDATA[顺序图 的各种存储情况，如下图所示。如果使用顺序表作为队列的话，当处于上图的最右图状态时，不能再继续插入元素，否则会因为数组越界而导致程序异常。假溢出：队列中还有可用的空间，却无法使用。 由此产生了由链表实现的 循环队列 ，只有队列未满时才可以插入新的队尾元素。 循环队列 (Circular Queue)的存储结构，如下图所示。 简单描述： 入队时，尾指针Q.rear追上头指针Q.front，队列已满。 出队时，头指针Q.front追上尾指针Q.rear，队列为空。12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485// 队列：尾部插入，头部删除#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#define QUEUE_SIZE 100#define OVERFLOW -2#define ERROR -1#define OK 1typedef int DataType;// 数据结构typedef struct&#123; DataType *data; // 存放元素 int front, rear; // 头指针，尾指针&#125; CircleQueue;// 初始化队列// 头指针和尾指针都指向第0个元素int InitQueue(CircleQueue *Q)&#123; // 申请内存空间 Q-&gt;data = (DataType *)malloc(QUEUE_SIZE * sizeof(DataType)); if (!Q-&gt;data) &#123; return ERROR; &#125; Q-&gt;front = Q-&gt;rear = 0; return OK;&#125;// 少用一个元素空间，也即是尾指针指向的元素始终为空// 队列是否已满int IsFull(CircleQueue *Q)&#123; return (Q-&gt;rear + 1) % QUEUE_SIZE == Q-&gt;front;&#125;// 是否为空队列int IsEmpty(CircleQueue *Q)&#123; return Q-&gt;front == Q-&gt;rear;&#125;// 入队int EnQueue(CircleQueue *Q, DataType e)&#123; // 判断队列是否已满 if (IsFull(Q)) &#123; return OVERFLOW; &#125; // 设置元素值 Q-&gt;data[Q-&gt;rear] = e; // 尾指针向前移动一位 Q-&gt;rear = (Q-&gt;rear + 1) % QUEUE_SIZE; return OK;&#125;int main()&#123; // 创建队列 CircleQueue Q; InitQueue(&amp;Q); // 入队 for (int i = 0; i &lt; 10; i++) &#123; EnQueue(&amp;Q, i); &#125; // 打印 DataType *data = Q.data; int k = Q.front; while (k % QUEUE_SIZE != Q.rear) &#123; printf(&quot;%d &quot;, data[k]); k++; &#125; return 0;&#125;]]></content>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[基数排序]]></title>
+    <url>%2F2018%2F04%2F25%2F%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F%2F</url>
+    <content type="text"><![CDATA[基数排序 是一种借助多关键字排序的思想对单逻辑关键字进行排序的方法。个位数分类后各个桶的情况，如下图所示。12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#include &lt;math.h&gt;// 取指定位数的数字// position是数位int getPositionNum(int num, int position)&#123; return (int)(num / pow(10.0, position - 1)) % 10;&#125;// bitNum是数位个数// n是数字个数void RadixSort(int *arr, int bitNum, int n)&#123; int radix = 10; int *count, *bucket, i, j, k; // 初始化10个桶，每个桶有各自编号，编号是0~9，分别对应数位数字。桶装的是各个数位数字的个数 count = (int *) malloc(sizeof(int) * radix); // bucket = (int *) malloc(sizeof(int) * n); for (int k = 1; k &lt;= bitNum; k++) &#123; // 初始化各个桶为0个 for (int i = 0; i &lt; radix; i++) &#123; count[i] = 0; &#125; // 统计第k个数位数字的个数 for (int i = 0; i &lt; n; i++) &#123; // 查询第k位存放的数字 int num = getPositionNum(arr[i], k); // 该数字的数量 + 1 count[num]++; &#125; for (int i = 1; i &lt; radix; i++) &#123; count[i] = count[i] + count[i - 1]; &#125; for (int i = n - 1; i &gt;= 0; i--) &#123; j = getPositionNum(arr[i], k); bucket[count[j] - 1] = arr[i]; count[j]--; &#125; for (int i = 0, j = 0; i &lt; n; i++, j++) &#123; arr[i] = bucket[j]; &#125; &#125;&#125;int main()&#123; int arr[] = &#123;1,3,4,6&#125;; RadixSort(arr, 1, 4); for (int i = 0; i &lt; 4; i++) &#123; printf(&quot;%d &quot;, arr[i]); &#125; return 0;&#125;]]></content>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[归并排序]]></title>
+    <url>%2F2018%2F04%2F25%2F%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%2F</url>
+    <content type="text"><![CDATA[自然语言描述MergeSort(int *array, int low, int high)方法第一步：拆分第二步：左半部分递归拆分第三步：右半部分递归拆分第四步：调用方法Merge()进行排序和合并 Merge(int *array, int low, int mid, int high)方法第一步：有序插入到新的数组第二步：复制新数组的内容（下标0~length）到原数组（下标low~high）中 图解归并排序分割和合并过程，如下图所示。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;// 按顺序进行合并2个有序区void Merge(int *source, int low, int mid, int high)&#123; int i = low, j = mid + 1, p = 0; int *target; // 合并后的有序区 target = (int *) malloc(sizeof(int) * (high - low + 1)); if (!target) &#123; return; &#125; // i &gt; mid || j &gt; high 条件成立时，结束 while (i &lt;= mid &amp;&amp; j &lt;= high) &#123; // 如果第i个元素 &lt;= 第j个元素，则取小的元素出来，并且自增一位 target[p++] = (source[i] &lt;= source[j]) ? source[i++] : source[j++]; &#125; // 左半部分未遍历完 while (i &lt;= mid) &#123; target[p++] = source[i++]; &#125; // 右半部份未遍历完 while (j &lt;= high) &#123; target[p++] = source[j++]; &#125; // 把结果复制到原数组中 // p是从第0个下标开始插入元素的 p = 0; for (i = low; i &lt;= high; i++, p++) &#123; source[i] = target[p]; &#125;&#125;// 第一步：拆分// 第二步：左半部分递归拆分// 第三步：右半部分递归拆分// 第四步：排序并且合并void MergeSort(int *source, int low, int high)&#123; // 用分治法对source[low...high]进行二路归并 int mid; if (low &lt; high) &#123; mid = (low + high) / 2; // 一分为二 MergeSort(source, low, mid); // 左半部分一分为二，进行排序 MergeSort(source, mid + 1, high); // 右半部份一分为二，进行排序 Merge(source, low, mid, high); // 将2个有序区合并成一个有序区 &#125;&#125;int main()&#123; int arr [] = &#123;4,5,2,1&#125;; MergeSort(arr, 0, 3); for (int i = 0; i &lt; 4; i++) &#123; printf(&quot;%d &quot;, arr[i]); &#125; return 0;&#125;]]></content>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[C++基础入门]]></title>
+    <url>%2F2018%2F04%2F25%2Fcplusplus%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%2F</url>
+    <content type="text"><![CDATA[1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980// 标准库头文件#include &lt;iostream&gt;// 使用命名空间概念using std::cout;using std::endl;int outBool()&#123; bool isAlpha; isAlpha = false; if (!isAlpha) &#123; // 默认是以0或1输出布尔值 std::cout &lt;&lt; &quot;isAlpha = &quot; &lt;&lt; isAlpha &lt;&lt; std::endl; // 以true或false输出布尔值 std::cout &lt;&lt; std::boolalpha &lt;&lt; &quot;isAlpha = &quot; &lt;&lt; isAlpha &lt;&lt; std::endl; &#125; return 0;&#125;// 定义全局变量// int v1 = 20;// 变量的引用作为参数传入，调用时只需要传入普通变量即可void swap(int&amp; a, int&amp; b)&#123; int t; t = a; a = b; b = t;&#125;int main()&#123; // 输出Aloha world! // endl是输出换行意思 // cout &lt;&lt; &quot;Aloha world!&quot; &lt;&lt; endl; // 显式转换数据类型static_case&lt;double&gt; // cout &lt;&lt; static_cast&lt;double&gt;(1) / 2 &lt;&lt; endl; // int v1 = 5; // cout &lt;&lt; &quot;打印局部变量值 = &quot; &lt;&lt; v1 &lt;&lt; endl; // :: 打印全局变量 // cout &lt;&lt; &quot;打印全局变量值 = &quot; &lt;&lt; ::v1 &lt;&lt; endl; // inline内联函数 // 如 inline int max(int a, int b) &#123;&#125; // 引用作为参数 /*int a1 = 10; int a2 = 20; cout &lt;&lt; &quot;交换前：a1 = &quot; &lt;&lt; a1 &lt;&lt; &quot; a2 = &quot; &lt;&lt; a2 &lt;&lt; endl; swap(a1, a2); cout &lt;&lt; &quot;交换后：a1 = &quot; &lt;&lt; a1 &lt;&lt; &quot; a2 = &quot; &lt;&lt; a2 &lt;&lt; endl;*/ // C++创建对象 // 创建一个char对象，并且初始值是97 // char* s = new char(97); // 创建一个长度为10的数组对象 // int* p = new int[10]; // C++ 定义常量 //const int ARRAY_SIZE = 10; //int arr[ARRAY_SIZE]; //int x = 1; // 定义常量指针 //const int* p1; //p1 = &amp;x; // *p1 = 10; // 定义指针常量 //int* const p2 = &amp;x; //int y = 10; //p2 = &amp;y; // const在前先读，const在前不变 return 0;&#125;]]></content>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[选择排序]]></title>
+    <url>%2F2018%2F04%2F24%2F%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F%2F</url>
+    <content type="text"><![CDATA[基本思想第一趟：在所有元素中选出最小元素。把它和第1个元素进行位置交换。第二趟：在第2个元素 到 最后一个元素中，选出最小元素。把它和第2个元素交换。…依次类推，直到最后一个元素。 算法图解12345678910111213141516171819202122232425262728293031323334353637383940414243#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;// 简单选择排序// 基本思想：通过n - 1次数据元素的比较，从n - i + 1个记录中选择最小的数据，并与第i个数据进行交换int SelectSort(int * arr, int n)&#123; // 遍历n - 1次就可以了 for (int i = 0; i &lt; n - 1; i++) &#123; // 假定第一个为最小值 int min = arr[i], minIndex = i; // 从第二个数开始取 for (int j = i + 1; j &lt; n; j++) &#123; // 跟最小值比较。小了，则重新赋值 if (arr[j] &lt; min) &#123; minIndex = j; min = arr[minIndex]; &#125; &#125; // 把最小值移到有序序列的末端 arr[minIndex] = arr[i]; arr[i] = min; &#125; return 0;&#125;int main()&#123; int n = 10; int arr[10] = &#123;54,675,635,5634,243, 432,13,341,132,341&#125;; SelectSort(arr, n); for (int i = 0; i &lt; n; i++) &#123; printf(&quot;%d &quot;, arr[i]); &#125; return 0;&#125;]]></content>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[指针基本概念]]></title>
+    <url>%2F2018%2F04%2F24%2F%E6%8C%87%E9%92%88%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%2F</url>
+    <content type="text"><![CDATA[12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;// 指针的基本定义void PointerDefine()&#123; // 指针变量存放的另一种变量的地址 int a1 = 100; int a2 = 20; // 定义整形数据的指针变量 int *p1, *p2; // 把指针p1指向a1变量 p1 = &amp;a1; p2 = &amp;a2; printf(&quot;%p, %p\n&quot;, p1, p2); // 输出a1，a2所在内存中的地址 printf(&quot;%d, %d\n&quot;, *p1, *p2); // 输出p1，p2指向变量对应的值&#125;// 编写程序，输入2个整数，按先大后小的顺序输出a和b// 思路：用指针的方法处理这个问题，不交换整形变量的值，而是交换指针变量的值void SwitchPointer()&#123; int a, b; printf(&quot;请输入2个整数：&quot;); scanf(&quot;%d %d&quot;, &amp;a, &amp;b); int *pa = &amp;a, *pb = &amp;b; if (*pa &lt; *pb) &#123; int *p = pa; pa = pb; pb = p; &#125; printf(&quot;由大到小输出2个值：%d %d&quot;, *pa, *pb);&#125;// 指针变量作为函数参数。作用是将一个变量的地址传送到另一个函数中// 通过指针变量的传入，可以改变指针所指向的变量的值void Swap(int *p1, int *p2)&#123; // 交换指针所指向变量的值 int temp = *p1; *p1 = *p2; *p2 = temp;&#125;// 打印交换前和交换后的值void PrintSwap()&#123; int a = 111, b = 222; printf(&quot;交换前，a = %d，b = %d\n&quot;, a, b); Swap(&amp;a, &amp;b); printf(&quot;交换后，a = %d，b = %d\n&quot;, a, b);&#125;// 输入3个整数a、b、c，要求按从大到小的顺序将他们输出，用函数实现// 用exchange函数改变这3个变量的值，用swap函数交换2个变量的值void exchange(int *p1, int *p2, int *p3)&#123; if (*p1 &lt; *p2) &#123; Swap(p1, p2); &#125; if (*p1 &lt; *p3) &#123; Swap(p1, p3); &#125; if (*p2 &lt; *p3) &#123; Swap(p2, p3); &#125;&#125;int main()&#123; int a = 2, b = 2, c = 3; exchange(&amp;a, &amp;b, &amp;c); printf(&quot;从大到小：%d %d %d\n&quot;, a, b, c); return 0;&#125;]]></content>
+      <tags>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[插入排序（含希尔排序）]]></title>
+    <url>%2F2018%2F04%2F24%2F%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%EF%BC%88%E5%90%AB%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[算法描述第三趟的算法描述：// 取出3// 和5比较，小了，5往后移一位// 和6比较，小了，6往后移一位// 发现没得比较了，元素插入到第0个位置 图解 直接插入排序 (Straight Insertion Sort)的排序过程，如下图所示。1234567891011121314151617181920212223242526272829303132333435363738394041#include &lt; stdio.h &gt; #include &lt; stdlib.h &gt;void InsertSort(int array[], int length) &#123; int i, temp, p; // 从第 2 个元素开始 for (i = 1; i &lt; length; i++) &#123; // 把第i个元素保存起来，以便留出空位给新的元素 temp = array[i]; // p保存了当前要比较的元素 p = i - 1; while (p &gt;= 0 &amp;&amp; temp &lt; array[p]) &#123; // 从后往前挪出空位 array[p + 1] = array[p]; p--; &#125; // 插入 array[p + 1] = temp; &#125;&#125;int main() &#123; int length; printf(&quot;请输入数组长度：&quot;); scanf(&quot;%d&quot;, &amp;length); int * array; array = (int *) malloc(sizeof(int) * length); printf(&quot;请输入数组（以逗号分隔）：&quot;); for (int i = 0; i &lt; length; i++) &#123; scanf(&quot;%d&quot;, &amp;array[i]); &#125; InsertSort(array, length); for (int i = 0; i &lt; length; ++i) &#123; printf(&quot;%d &quot;, array[i]); &#125; printf(&quot;\n&quot;); return 0;&#125; 希尔排序 (Shell’s Sort)是插入排序中的一种。排序过程如下图所示。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;// 希尔排序int ShellSort(int * arr, int length)&#123; int i, j, k; int temp, gap; // 初始步长为数组的一半 // 往后逐渐缩小为原来的一半 for (gap = length / 2; gap &gt; 0; gap /= 2) &#123; // 只需要遍历到一个步长即可 for (i = 0; i &lt; gap; i++) &#123; // 从步长的第2个元素开始 // 使用插入排序 for (j = i + gap; j &lt; length; j += gap) &#123; if (arr[j] &lt; arr[j - gap]) &#123; temp = arr[j]; k = j - gap; while (k &gt;= 0 &amp;&amp; arr[k] &gt; temp) &#123; arr[k + gap] = arr[k]; k -= gap; &#125; arr[k + gap] = temp; &#125; &#125; &#125; &#125; return 1;&#125;int main()&#123; int length; printf(&quot;请输入数组长度：&quot;); scanf(&quot;%d&quot;, &amp;length); int * arr = (int *) malloc(sizeof(int) * length); printf(&quot;请输入数字（以空格分隔）：&quot;); for (int i = 0; i &lt; length; i++) &#123; scanf(&quot;%d&quot;, &amp;arr[i]); &#125; ShellSort(arr, length); for (int i = 0; i &lt; length; i++) &#123; printf(&quot;%d\t&quot;, arr[i]); &#125; return 0;&#125;]]></content>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[冒泡排序（含快速排序）]]></title>
+    <url>%2F2018%2F04%2F23%2F%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%EF%BC%88%E5%90%AB%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[冒泡排序 的排序过程，如下图所示。1234567891011121314151617181920212223242526272829303132#include &lt; stdio.h &gt; #include &lt; stdlib.h &gt;void BubbleSort(int * arr, int length) &#123; int round = 1; // 第 i 轮 int temp; // 临时值，用于交换 for (int i = 0; i &lt; length - 1; i++) &#123; for (int j = 0; j &lt; length - round; j++) &#123; if (arr[j + 1] &lt; arr[j]) &#123; // 交换位置 temp = arr[j + 1]; arr[j + 1] = arr[j]; arr[j] = temp; &#125; &#125; round++; &#125;&#125;int main() &#123; int arr[10] = &#123;2,1,0,1432,41,4321,314,-413,413,41&#125;; int length = 10; BubbleSort(arr, length); for (int i = 0; i &lt; length; i++) &#123; printf(&quot;%d \t&quot;, arr[i]); &#125; return 0;&#125; 快速排序 是对冒泡排序的改进。第一趟排序，如下图所示。排序过程，如下图所示。1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950#include &lt; stdio.h &gt; #include &lt; stdlib.h &gt;// 快速排序// 参数：待排数组, 头指针, 尾指针void QuickSort(int * arr, int low, int high) &#123; // 取出关键字 int key = arr[low]; // 递归结束条件 if (low &gt; high) &#123; return; &#125; int head = low; int tail = high; while (tail &gt; head) &#123; // 比key大或等于key，则指针向前移 while ((arr[tail] &gt;= key) &amp;&amp; (tail &gt; head)) &#123; tail--; &#125; // 比key小或等于key，则交换 arr[head] = arr[tail]; // 比key小或等于key，则指针向后移 while ((arr[head] &lt;= key) &amp;&amp; (tail &gt; head)) &#123; head++; &#125; // 比key大，则交换 arr[tail] = arr[head]; &#125; // 替换最后重合的值为key arr[head] = key; // 递归排序左半部分 QuickSort(arr, low, head - 1); // 递归排序右半部分 QuickSort(arr, tail + 1, high);&#125;int main() &#123; int arr[10] = &#123;1,32,231,1,132,413,41,41,413,5443&#125;; QuickSort(arr, 0, 9); for (int i = 0; i &lt; 10; i++) &#123; printf(&quot;%d &quot;, arr[i]); &#125; return 0;&#125;]]></content>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[中大实践课程复习要点]]></title>
+    <url>%2F2018%2F04%2F23%2F%E4%B8%AD%E5%A4%A7%E5%AE%9E%E8%B7%B5%E8%AF%BE%E7%A8%8B%E5%A4%8D%E4%B9%A0%E8%A6%81%E7%82%B9%2F</url>
+    <content type="text"><![CDATA[如果半个小时未解决的算法，一定不要再沉迷，一定要看书籍，不能浪费时间了。]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[二分法查找]]></title>
+    <url>%2F2018%2F04%2F23%2F%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE%2F</url>
+    <content type="text"><![CDATA[二分法查找 (Binary Search)又称折半查找，它只适用于有序表的查找。 其查找过程：先确定待查记录所在的范围（区间），然后逐步缩小范围直到找到或找不到该记录为止。 二分法查找的过程，如下图所示。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;/** 二分法查找 **/int BinarySearch(int * arr, int key, int low, int high)&#123; int mid; while (low &lt;= high) &#123; mid = (low + high) / 2; if (key == arr[mid]) &#123; return mid; &#125; else if (key &lt; arr[mid]) &#123; high = mid - 1; &#125; else &#123; low = mid + 1; &#125; &#125; return -1;&#125;int main()&#123; int n, i, key, position; int * arr; printf(&quot;请输入有序数组的大小：&quot;); scanf(&quot;%d&quot;, &amp;n); arr = (int *) malloc(sizeof(int) * n); printf(&quot;请按升序输入数字：&quot;); for (int i = 0; i &lt; n; i++) &#123; scanf(&quot;%d&quot;, &amp;arr[i]); &#125; printf(&quot;请输入要查找的数字：&quot;); scanf(&quot;%d&quot;, &amp;key); position = BinarySearch(arr, key, 0, n - 1); if (position &gt;= 0) &#123; printf(&quot;该数字是第%d个数字&quot;, (position + 1)); &#125; else &#123; printf(&quot;未查询到该数字&quot;); &#125; return 0;&#125;]]></content>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[无向图的邻接表存储]]></title>
+    <url>%2F2018%2F04%2F22%2F%E6%97%A0%E5%90%91%E5%9B%BE%E7%9A%84%E9%82%BB%E6%8E%A5%E8%A1%A8%E5%AD%98%E5%82%A8%2F</url>
+    <content type="text"><![CDATA[邻接表 是图的一种链式存储结构。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#define OK 1#define ERROR -1#define MAX_NUM 20#define OVERFLOW -2#define TRUE 1#define FALSE 0typedef int Status;typedef int QElemType;typedef char VexType;// 邻接表存储结构// 边结点typedef struct EdgeNode&#123; int adjvex; // 顶点的位置 struct EdgeNode *next; // 指向下一条边的指针&#125; EdgeNode, *EdgeLink;// 顶点结点typedef struct VexNode&#123; VexType data; // 顶点数据 EdgeNode *firstEdge; // 指向第一条依附该顶点的边的指针&#125; VexNode, AdjList[20];// 图typedef struct ALGraph&#123; AdjList adjList; int vexNum, edgeNum; // 顶点数和边数&#125; ALGraph;// 创建图Status CreateGraph(ALGraph *G)&#123; int i, j, k; EdgeLink e; printf(&quot;请输入顶点数目和边数：\n&quot;); scanf(&quot;%d&quot;, &amp;(G-&gt;vexNum)); scanf(&quot;%d&quot;, &amp;(G-&gt;edgeNum)); printf(&quot;请输入各顶点的数据：\n&quot;); for (i = 0; i &lt; G-&gt;vexNum; i++) &#123; scanf(&quot;%c&quot;, &amp;(G-&gt;adjList[i].data)); // 回车时继续 if (G-&gt;adjList[i].data == &apos;\n&apos;) &#123; i--; continue; &#125; G-&gt;adjList[i].firstEdge = NULL; &#125; printf(&quot;请依次输入边&lt;Vi,Vj&gt;的顶点序号：\n&quot;); for(k = 0; k &lt; G-&gt;edgeNum; k++) &#123; scanf(&quot;%d&quot;, &amp;i); scanf(&quot;%d&quot;, &amp;j); // 边的第一个顶点 e = (EdgeLink) malloc(sizeof(EdgeNode)); // 初始化一个边结点 e-&gt;adjvex = j; // 顶点位置 e-&gt;next = G-&gt;adjList[i].firstEdge; // 指向下一条边的指针 G-&gt;adjList[i].firstEdge = e; // 边的第二个顶点 e = (EdgeLink) malloc(sizeof(EdgeNode)); // 初始化一个边结点 e-&gt;adjvex = i; // 顶点位置 e-&gt;next = G-&gt;adjList[j].firstEdge; // 指向下一条边的指针 G-&gt;adjList[j].firstEdge = e; &#125; return OK;&#125;// 队列存储结构（用于图的遍历）typedef struct QNode&#123; QElemType data; // 结点的数据 struct QNode *next; // 指向下一个结点&#125; QNode, *QueuePtr;typedef struct&#123; QueuePtr front; // 队头指针 QueuePtr rear; // 队尾指针&#125; LinkQueue;// 初始化队列Status initQueue(LinkQueue *Q)&#123; QueuePtr head = (QNode*) malloc(sizeof(QNode)); if (!head) &#123; return OVERFLOW; &#125; Q-&gt;front = head; Q-&gt;rear = head; // 置空队尾的指向 Q-&gt;front-&gt;next = NULL; return OK;&#125;// 入队Status enQueue(LinkQueue *Q, QElemType e)&#123; // 申请一个结点 QueuePtr node = (QNode*) malloc(sizeof(QNode)); if (!node) &#123; return OVERFLOW; &#125; node-&gt;data = e; node-&gt;next = NULL; // 置空队尾指向空，在遍历时需要用到的 Q-&gt;rear-&gt;next = node; Q-&gt;rear = node; return OK;&#125;// 只能从队头出队Status deQueue(LinkQueue *Q, QElemType *e)&#123; // 判断是否有元素 if (Q-&gt;front == Q-&gt;rear) &#123; return ERROR; &#125; // 改队头指针 // 谨记：队列头部是有一个空值的头指针的 QueuePtr p = Q-&gt;front-&gt;next; *e = p-&gt;data; Q-&gt;front-&gt;next = p-&gt;next; // 判断当前是否是最后一个元素了 if (Q-&gt;rear == p) &#123; Q-&gt;rear = Q-&gt;front; &#125; free(p); return OK;&#125;int visited[20]; // 用于记录状态// 递归从第i个结点深度优先遍历图void DFS(ALGraph G, int i)&#123; EdgeLink p; visited[i] = TRUE; printf(&quot;%c\t&quot;, G.adjList[i].data); p = G.adjList[i].firstEdge; while (p) &#123; if (!visited[p-&gt;adjvex]) &#123; DFS(G, p-&gt;adjvex); &#125; p = p-&gt;next; &#125;&#125;// 深度优先遍历图Status DFSTraverse(ALGraph G)&#123; int i; for (i = 0; i &lt; MAX_NUM; i++) &#123; visited[i] = FALSE; &#125; for (i = 0; i &lt; G.vexNum; i++) &#123; if (!visited[i]) &#123; DFS(G, i); &#125; &#125; return OK;&#125;int main()&#123; ALGraph G; CreateGraph(&amp;G); DFSTraverse(G); return 0;&#125;]]></content>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[二叉树]]></title>
+    <url>%2F2018%2F04%2F21%2F%E4%BA%8C%E5%8F%89%E6%A0%91%2F</url>
+    <content type="text"><![CDATA[二叉树创建过程，如下图所示。程序输入和输出过程，如下图所示。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475#include &lt; stdio.h &gt; #include &lt; stdlib.h &gt;#define OK 1#define OVERFLOW - 2typedef int TElemType;typedef int Status;// 存储结构typedef struct BiTNode &#123; TElemType data; struct BiTNode *lchild, *rchild; // 左子树 右子树&#125; BiTNode, *BiTree;// 初始化一颗树// 问题：如何理解**T参数呢Status CreateBiTree(BiTree *T, char *desc) &#123; TElemType e; printf(&quot;%s&quot;, desc); scanf(&quot;%d&quot;, &amp;e); // 输入一个数 if (e == 0) &#123; (*T) = NULL; &#125; else &#123; (*T) = (BiTree) malloc(sizeof(BiTNode)); if (!(*T)) &#123; return OVERFLOW; &#125; (*T)-&gt;data = e; // 左子树的地址的地址 CreateBiTree(&amp;((*T)-&gt;lchild), &quot;请输入左结点数据：&quot;); // 创建左子树 CreateBiTree(&amp;((*T)-&gt;rchild), &quot;请输入右结点数据：&quot;); // 创建右子树 &#125; return OK;&#125;// 中序遍历二叉树void Travel(BiTree T)&#123; // 递归结束条件：指向数据为空 if (T != NULL) &#123; printf(&quot;%d &quot;, T-&gt;data); Travel(T-&gt;lchild); Travel(T-&gt;rchild); &#125;&#125;// 求二叉树的深度// 分别遍历左子树，右子树的深度，取最大值// 算法描述：遍历左右子树，取较大深度 + 1int maxDepth(BiTree T)&#123; // 递归结束条件：树指向节点为空 if (T == NULL) &#123; return 0; &#125; int lDepth = maxDepth(T-&gt;lchild) + 1; int rDepth = maxDepth(T-&gt;rchild) + 1; return lDepth &gt; rDepth ? lDepth : rDepth;&#125;int main() &#123; BiTree T; CreateBiTree(&amp;T, &quot;请输入根结点数据：&quot;); printf(&quot;\n先序遍历输出二叉树序列：&quot;); Travel(T); printf(&quot;\n该二叉树最大深度：%d&quot;, maxDepth(T)); return 0;&#125;]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>C语言</tag>
+        <tag>二叉树</tag>
+        <tag>链式结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[线性表的链式存储结构]]></title>
+    <url>%2F2018%2F04%2F21%2F%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%2F</url>
+    <content type="text"><![CDATA[线性表的链式存储的结点示意图，如下图所示。线性表的链式存储存储结构示意图，如下图所示。线性链表的数据结构，如下图所示。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768#include &lt; stdio.h &gt; #include &lt; stdlib.h &gt;#define OVERFLOW -2#define ERROR 0#define OK 1#define ElemType int#define Status int// 存储结构typedef struct LNode &#123; ElemType data; // 数据域 struct LNode * next; // 指针域，下一个结点的指针&#125; LNode, *LinkList;// 初始化线性表void InitList(LinkList * L) &#123; // 线性表L的指针指向第一个元素 // LinkList *L == LNode** 是指针的指针 *L = (LinkList) malloc(sizeof(LNode)); // 申请一个结点的空间 if (!L) &#123; exit(OVERFLOW); &#125; (*L)-&gt;next = NULL; // 新链表的下一个元素指向NULL&#125;// 插入元素Status InsertElem(LinkList L, int i, ElemType e) &#123; int j = 0; // i是从1开始的，第1个元素是对应下标为0的元素 i = i - 1; LinkList s; LinkList p = L; // p不为空 while (p &amp;&amp; j &lt; i) &#123; p = p-&gt;next; // 通过头指针去逐个遍历，找出i的位置 j++; &#125; if (!p || j &gt; i) &#123; return ERROR; &#125; s = (LinkList) malloc(sizeof(LNode)); // 新增一个结点 s-&gt;data = e; s-&gt;next = p-&gt;next; p-&gt;next = s; return OK;&#125;// 遍历线性表void TraverseList(LinkList L) &#123; LinkList p = L-&gt;next; while (p) &#123; printf(&quot;%d\t&quot;, p-&gt;data); p = p-&gt;next; &#125;&#125;int main() &#123; LinkList L; // 传入引用，需要修改L InitList(&amp;L); InsertElem(L, 1, 10); TraverseList(L); return 0;&#125;]]></content>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+</search>
