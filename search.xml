@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[spring-cloud-start]]></title>
+    <url>%2F2018%2F05%2F03%2Fspring-cloud-start%2F</url>
+    <content type="text"><![CDATA[Spring Cloud 包含组件：Eureka、Ribbon、Hystrix、Zuul、Spring-Cloud-Config Eureka服务注册与发现注册中心。 Ribbon服务调用端负载均衡负责负载均衡的计算。 Hystrix服务调用端熔断Hystrix熔断机制，每一个微服务都有熔断处理。 Zuul代理机制路由规则（路径映射），对名称进行隐藏。 Spring Cloud Config服务配置组件基于git进行配置的管理。 Zipkin链路跟踪工具作用是监控微服务集群中调用链路的通畅情况。]]></content>
+      <tags>
+        <tag>Spring Cloud</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Lucene全文检索工具]]></title>
     <url>%2F2018%2F05%2F03%2FLucene%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2%E5%B7%A5%E5%85%B7%2F</url>
     <content type="text"><![CDATA[Lucene是基于Java的全文信息检索工具包。 索引创建与检索创建索引 需要检索的数据(Document) 分词技术(Analyzer) 索引创建(Indexer) 索引检索 搜索关键词(keywords) 分词技术 (Analyzer) 检索索引(Search) 返回结果 Lucene文件结构 索引(Index)：一个索引放在一个文件夹中。 段(Segment)：一个索引中可以有很多段，段与段之间是独立的，添加新的文档可以产生新段，不同的段可以合并成一个新段。 文档(Document)：文档是创建索引的基本单位，不同的文档保存在不同的段中，一个段可以包含多个文档。 域(Field)：一个文档包含不同类型的信息，可以拆分开索引。 词(Term)：词是索引的最小单位，是经过词法分析和语言处理后的数据。 正向信息就是按层次保存了索引一直到词的包含关系：索引 &gt; 段 &gt; 文档 &gt; 域 &gt; 词反向信息：词 &gt; 文档 其他Lucene索引查看工具：Luke]]></content>
