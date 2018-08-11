@@ -1,602 +1,300 @@
+
 <!DOCTYPE html>
+<html lang="zh-Hans">
 
 
+<!-- pageTitle += config.title + ' | '; -->
 
-  
-
-
-<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="C语言,数据结构," />
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="一叶知秋的博客" type="application/atom+xml" />
-
-
-
-
-
-
-<meta name="description" content="直接选择排序基本思想第一趟：在所有元素中选出最小元素。把它和第1个元素进行位置交换。第二趟：在第2个元素 到 最后一个元素中，选出最小元素。把它和第2个元素交换。…依次类推，直到最后一个元素。 算法图解 算法实现12345678910111213141516171819202122232425262728293031323334353637383940414243#include &amp;lt;stdi">
-<meta name="keywords" content="C语言,数据结构">
-<meta property="og:type" content="article">
-<meta property="og:title" content="选择排序（含堆排序）">
-<meta property="og:url" content="https://blog.fomeiherz.top/2018/04/24/选择排序（含堆排序）/index.html">
-<meta property="og:site_name" content="一叶知秋的博客">
-<meta property="og:description" content="直接选择排序基本思想第一趟：在所有元素中选出最小元素。把它和第1个元素进行位置交换。第二趟：在第2个元素 到 最后一个元素中，选出最小元素。把它和第2个元素交换。…依次类推，直到最后一个元素。 算法图解 算法实现12345678910111213141516171819202122232425262728293031323334353637383940414243#include &amp;lt;stdi">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p7240jy2w.bkt.clouddn.com/%E7%9B%B4%E6%8E%A5%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F%E7%9A%84%E6%8E%92%E5%BA%8F%E8%BF%87%E7%A8%8B.png">
-<meta property="og:updated_time" content="2018-05-11T10:11:50.457Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="选择排序（含堆排序）">
-<meta name="twitter:description" content="直接选择排序基本思想第一趟：在所有元素中选出最小元素。把它和第1个元素进行位置交换。第二趟：在第2个元素 到 最后一个元素中，选出最小元素。把它和第2个元素交换。…依次类推，直到最后一个元素。 算法图解 算法实现12345678910111213141516171819202122232425262728293031323334353637383940414243#include &amp;lt;stdi">
-<meta name="twitter:image" content="http://p7240jy2w.bkt.clouddn.com/%E7%9B%B4%E6%8E%A5%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F%E7%9A%84%E6%8E%92%E5%BA%8F%E8%BF%87%E7%A8%8B.png">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"remove","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="https://blog.fomeiherz.top/2018/04/24/选择排序（含堆排序）/"/>
-
-
-
-
-
-  <title>选择排序（含堆排序） | 一叶知秋的博客</title>
+    <meta name="keywords" content="C语言,数据结构," />
   
 
-
-
-
-
-
-
-
+  
+    <meta name="description" content="选择排序（含堆排序）" />
+  
+  
+  <link rel="icon" type="image/x-icon" href="/logo.png">
+  <title>选择排序（含堆排序）</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
-  
-    
-  
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="https://blog.fomeiherz.top/images/logo.png">
+    <span class="title">一叶知秋的博客</span>
+  </a>
 
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">一叶知秋的博客</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
+  <ul class="pure-menu-list clearfix">
       
-        <p class="site-subtitle">不迷失，不彷徨</p>
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
       
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
       
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
       
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
       
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
       
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
+  </ul>
+   
 </nav>
 
+  </div>
 
-
- </div>
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        选择排序（含堆排序）
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2018-04-24T15:44:57.000Z">
+        2018-04-24
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C语言/">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
     </header>
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.fomeiherz.top/2018/04/24/选择排序（含堆排序）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Fomeiherz">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一叶知秋的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">选择排序（含堆排序）</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-24T23:44:57+08:00">
-                2018-04-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h3 id="直接选择排序"><a href="#直接选择排序" class="headerlink" title="直接选择排序"></a>直接选择排序</h3><h4 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h4><p>第一趟：在所有元素中选出最小元素。把它和第1个元素进行位置交换。<br>第二趟：在第2个元素 到 最后一个元素中，选出最小元素。把它和第2个元素交换。<br>…<br>依次类推，直到最后一个元素。</p>
+    <div class="post-content">
+      <h3 id="直接选择排序"><a href="#直接选择排序" class="headerlink" title="直接选择排序"></a>直接选择排序</h3><h4 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h4><p>第一趟：在所有元素中选出最小元素。把它和第1个元素进行位置交换。<br>第二趟：在第2个元素 到 最后一个元素中，选出最小元素。把它和第2个元素交换。<br>…<br>依次类推，直到最后一个元素。</p>
 <h4 id="算法图解"><a href="#算法图解" class="headerlink" title="算法图解"></a>算法图解</h4><p><img src="http://p7240jy2w.bkt.clouddn.com/%E7%9B%B4%E6%8E%A5%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F%E7%9A%84%E6%8E%92%E5%BA%8F%E8%BF%87%E7%A8%8B.png" alt="avata"></p>
 <h4 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">// 简单选择排序</span><br><span class="line">// 基本思想：通过n - 1次数据元素的比较，从n - i + 1个记录中选择最小的数据，并与第i个数据进行交换</span><br><span class="line">int SelectSort(int * arr, int n)</span><br><span class="line">&#123;</span><br><span class="line">    // 遍历n - 1次就可以了</span><br><span class="line">    for (int i = 0; i &lt; n - 1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        // 假定第一个为最小值</span><br><span class="line">        int min = arr[i], minIndex = i;</span><br><span class="line">        // 从第二个数开始取</span><br><span class="line">        for (int j = i + 1; j &lt; n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            // 跟最小值比较。小了，则重新赋值</span><br><span class="line">            if (arr[j] &lt; min)</span><br><span class="line">            &#123;</span><br><span class="line">                minIndex = j;</span><br><span class="line">                min = arr[minIndex];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        // 把最小值移到有序序列的末端</span><br><span class="line">        arr[minIndex] = arr[i];</span><br><span class="line">        arr[i] = min;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n = 10;</span><br><span class="line">    int arr[10] = &#123;54,675,635,5634,243, 432,13,341,132,341&#125;;</span><br><span class="line">    SelectSort(arr, n);</span><br><span class="line"></span><br><span class="line">    for (int i = 0; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%d  &quot;, arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p><strong>堆排序</strong>是一种树形选择排序，在排序过程中可以把元素看成一颗完全二叉树，每个节点都大（小）于他的两个子结点。当每个节点都大于等于它的两个子结点时，称为大顶堆；否则为小顶堆。</p>
 <h4 id="算法实现-1"><a href="#算法实现-1" class="headerlink" title="算法实现"></a>算法实现</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">//堆排序（HeapSort）  </span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">//堆调整，构建大顶堆，arr[]是待调整的数组，i是待调整的数组  </span><br><span class="line">//元素的位置，length是数组的长度  </span><br><span class="line">void HeapAdjust(int arr[], int i, int length) </span><br><span class="line">&#123;</span><br><span class="line">    int Child;</span><br><span class="line">    int temp;</span><br><span class="line">    for (; 2 * i + 1 &lt; length; i = Child) </span><br><span class="line">    &#123;</span><br><span class="line">        //子节点的位置 = 2 * (parent(父结点)) + 1  </span><br><span class="line">        Child = 2 * i + 1;</span><br><span class="line">        //得到子结点中较大的结点  </span><br><span class="line">        if(Child &lt; length - 1 &amp;&amp; arr[Child + 1] &gt; arr[Child]) </span><br><span class="line">        &#123;</span><br><span class="line">            ++Child;</span><br><span class="line">        &#125;</span><br><span class="line">        //如果较大的子结点大于父结点那么把较大的子结点往上移动  </span><br><span class="line">        //替换它的父结点  </span><br><span class="line">        if(arr[i] &lt; arr[Child]) </span><br><span class="line">        &#123;</span><br><span class="line">            temp = arr[i];</span><br><span class="line">            arr[i] = arr[Child];</span><br><span class="line">            arr[Child] = temp;</span><br><span class="line">        &#125; else &#123; </span><br><span class="line">			break;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//堆排序算法  </span><br><span class="line">void HeapSort(int arr[], int length) </span><br><span class="line">&#123;</span><br><span class="line">    int i;</span><br><span class="line">    //调整序列的前半部分元素，调整完之后第一个元素  </span><br><span class="line">    //是序列的最大元素，length/2-1是最后一个非叶子结点  </span><br><span class="line">    for (i = length / 2 - 1; i &gt;= 0; --i) </span><br><span class="line">	&#123; </span><br><span class="line">		HeapAdjust(arr, i, length);</span><br><span class="line">	&#125;</span><br><span class="line">    //从最后一个元素开始对序列进行调整，不断的缩小调整  </span><br><span class="line">    //的范围直到第一个元素  </span><br><span class="line">    //循环里是把第一个元素和当前的最后一个元素交换  </span><br><span class="line">    //保证当前的最后一个位置的元素是现在这个序列的最大的  </span><br><span class="line">    //不断的缩小调整heap的范围，每一次调整完毕保证第一个  </span><br><span class="line">    //元素是当前序列的最大的元素  </span><br><span class="line">    for (i = length - 1; i &gt; 0; --i) </span><br><span class="line">    &#123;</span><br><span class="line">        arr[i] = arr[0]^arr[i];</span><br><span class="line">        arr[0] = arr[0]^arr[i];</span><br><span class="line">        arr[i] = arr[0]^arr[i];</span><br><span class="line">        HeapAdjust(arr, 0, i); //递归调整</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() </span><br><span class="line">&#123;</span><br><span class="line">    int i;</span><br><span class="line">    int num[] = &#123;98, 48, 777, 63, 57, 433, 23, 1112, 1&#125;;</span><br><span class="line">    printf(&quot;待排序的数据是：&quot;);</span><br><span class="line">    for (i = 0; i &lt; sizeof(num) / sizeof(int); i++) </span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%d &quot;, num[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">    HeapSort(num, sizeof(num) / sizeof(int));</span><br><span class="line">    printf(&quot;排序后的数据是：&quot;);</span><br><span class="line">    for (i = 0; i &lt; sizeof(num) / sizeof(int); i++) </span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;%d &quot;, num[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
     </div>
-    
-    
-    
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/C语言/" rel="tag"># C语言</a>
-          
-            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/04/24/指针基本概念/" rel="next" title="指针基本概念">
-                <i class="fa fa-chevron-left"></i> 指针基本概念
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/25/cplusplus基础入门/" rel="prev" title="C++基础入门">
-                C++基础入门 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
   </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#直接选择排序"><span class="toc-text">直接选择排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本思想"><span class="toc-text">基本思想</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#算法图解"><span class="toc-text">算法图解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#算法实现"><span class="toc-text">算法实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#堆排序"><span class="toc-text">堆排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本概念"><span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#算法实现-1"><span class="toc-text">算法实现</span></a></li></ol></li></ol>
   </div>
 
 
-          </div>
-          
-
-
-          
-
-  
-
-
-
-        </div>
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Fomeiherz</span>
-
-  
+  </div>
 </div>
+<div class="copyright">
+    <span>本作品采用</span>
+    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
 
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
-
-
-
-
+</div>
+  
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
         
-
-
-
-
-
-
-
+          <span>〈 </span>
+          <a href="/2018/04/24/指针基本概念/" rel="next" title="指针基本概念">
+          指针基本概念
+          </a>
         
       </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2018/04/25/cplusplus基础入门/" rel="prev" title="C++基础入门">
+            C++基础入门
+          </a>
+          <span>〉</span>
         
       </div>
-    
+    </div>
+  
+
+
+    </div>
 
     
 
   </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="https://blog.fomeiherz.top">首页</a> |
+        <a class="bottom-item" href="https://blog.fomeiherz.top" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/fomeiherz" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a> | 
+        <a class="bottom-item" href="https://github.com/microacup/hexo-theme-micorb" target="_blank">Theme micorb</a>
+    </div>
+</footer>
 
   
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
 </script>
 
 
-
-
-
-
-
-
-
   
 
 
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>
