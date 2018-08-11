@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[aaaa]]></title>
-    <url>%2F2018%2F08%2F11%2Faaaa%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
     <title><![CDATA[Apriori Algorithm]]></title>
     <url>%2F2018%2F07%2F08%2FApriori-Algorithm%2F</url>
     <content type="text"><![CDATA[123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960&quot;&quot;&quot;Apriori exercise.&quot;&quot;&quot;def load_dataset(): return [[1, 3, 4], [2, 3, 5], [1, 2, 3, 5], [2, 5]]&apos;&apos;&apos;输入：源数据功能：从源数据提取候选项返回：1item是大小为1的所有候选项集的集合&apos;&apos;&apos;def create_1item(dataset): k_items = [] for transaction in dataset: for item in transaction: if [item] not in k_items: k_items.append([item]) k_items.sort() return list(map(frozenset, k_items))&apos;&apos;&apos;输入： 总数据集 k项的所有组合 最小支持度功能：计算k_items中的项集在数据集中的支持度输出： 满足支持度的候选项 各个候选项支持度&apos;&apos;&apos;def scan_dataset(dataset, k_items, min_support): k_item_dict = &#123;&#125; for transaction in dataset: for k_item in k_items: # 对于每一个候选项集k_item，检查是否是transaction的一部分 if k_item.issubset(transaction): k_item_dict[k_item] = k_item_dict.get(k_item, 0) + 1 # 总记录数 dataset_count = float(len(dataset)) result_list = [] support_dict = &#123;&#125; for k_item in k_item_dict: # 每个项集的支持度 = 包含该项集的记录 / 总记录 support = k_item_dict[k_item] / dataset_count # 将满足最小支持度的项集，加入retList if support &gt;= min_support: result_list.insert(0, k_item) # 汇总支持度数据 support_dict[k_item] = support return result_list, support_dictif __name__ == &apos;__main__&apos;: k_items = create_1item(load_dataset()) result_tuple = scan_dataset(load_dataset(), k_items, 0.5) # print(type(result_tuple)) print(result_tuple[0]) print(result_tuple[1])]]></content>
