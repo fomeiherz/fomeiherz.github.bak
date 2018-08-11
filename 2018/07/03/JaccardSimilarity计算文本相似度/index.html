@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+
+<!-- pageTitle += config.title + ' | '; -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="" />
+  
+
+  
+    <meta name="description" content="JaccardSimilarity计算文本相似度" />
+  
+  
+  <link rel="icon" type="image/x-icon" href="/logo.png">
+  <title>JaccardSimilarity计算文本相似度</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+</head>
+
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="https://blog.fomeiherz.top/images/logo.png">
+    <span class="title">一叶知秋的博客</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">标签</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+          
+      
+  </ul>
+   
+</nav>
+
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        JaccardSimilarity计算文本相似度
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2018-07-02T16:05:12.000Z">
+        2018-07-03
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+    </header>
+
+    <div class="post-content">
+      <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding=utf-8 -*-</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"># refer to : https://github.com/wyh267/myCodeLib/blob/master/Src/textDiff/JaccardSimilarity.py</span><br><span class="line">#</span><br><span class="line"># 利用jaccard similarity 计算文本相似度</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line">import os</span><br><span class="line">import time</span><br><span class="line">import progressbar</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#############################################</span><br><span class="line">#</span><br><span class="line"># 读取文件，保存到一个字符串中</span><br><span class="line"># 输入： 文件名完整路径</span><br><span class="line"># 输出： 文件内容</span><br><span class="line">#</span><br><span class="line">#############################################</span><br><span class="line">def read_file(file_name):</span><br><span class="line">    f = open(file_name, &quot;r&quot;)</span><br><span class="line">    file_contents = f.read()</span><br><span class="line">    file_contents = file_contents.replace(&quot;\t&quot;, &quot;&quot;)</span><br><span class="line">    file_contents = file_contents.replace(&quot;\r&quot;, &quot;&quot;)</span><br><span class="line">    file_contents = file_contents.replace(&quot;\n&quot;, &quot;&quot;)</span><br><span class="line">    f.close()</span><br><span class="line">    return file_contents</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#############################################</span><br><span class="line">#</span><br><span class="line"># 分割字符串，使用k-shingle方式进行分割</span><br><span class="line"># 输入：字符串，k值</span><br><span class="line"># 输出：分割好的字符串，存入数组中</span><br><span class="line">#</span><br><span class="line">#############################################</span><br><span class="line">def split_contents(content, k=5):</span><br><span class="line">    content_split = []</span><br><span class="line">    for i in range(len(content) - k):</span><br><span class="line">        content_split.append(content[i:i + k])</span><br><span class="line">    return content_split</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#############################################</span><br><span class="line">#</span><br><span class="line"># 将数据保存到hash表中，也就是某个集合</span><br><span class="line"># 输入：已经分隔好的数据</span><br><span class="line"># 输出：hash表</span><br><span class="line">#</span><br><span class="line">#############################################</span><br><span class="line">def hash_contents_list(content_list):</span><br><span class="line">    hash_content = &#123;&#125;</span><br><span class="line">    for i in content_list:</span><br><span class="line">        if i in hash_content:</span><br><span class="line">            hash_content[i] = hash_content[i] + 1</span><br><span class="line">        else:</span><br><span class="line">            hash_content[i] = 1</span><br><span class="line">    return hash_content</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#############################################</span><br><span class="line">#</span><br><span class="line"># 计算交集</span><br><span class="line"># 输入：两个hash表</span><br><span class="line"># 输出：交集的整数</span><br><span class="line">#</span><br><span class="line">#############################################</span><br><span class="line">def calc_intersection(hash_a, hash_b):</span><br><span class="line">    intersection = 0</span><br><span class="line">    if (len(hash_a) &lt;= len(hash_b)):</span><br><span class="line">        hash_min = hash_a</span><br><span class="line">        hash_max = hash_b</span><br><span class="line">    else:</span><br><span class="line">        hash_min = hash_b</span><br><span class="line">        hash_max = hash_a</span><br><span class="line"></span><br><span class="line">    for key in hash_min:</span><br><span class="line">        if key in hash_max:</span><br><span class="line">            if (hash_min[key] &lt;= hash_max[key]):</span><br><span class="line">                intersection = intersection + hash_min[key]</span><br><span class="line">            else:</span><br><span class="line">                intersection = intersection + hash_max[key]</span><br><span class="line"></span><br><span class="line">    return intersection</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#############################################</span><br><span class="line">#</span><br><span class="line"># 计算并集</span><br><span class="line"># 输入：两个hash表</span><br><span class="line"># 输出：并集的整数</span><br><span class="line">#</span><br><span class="line">#############################################</span><br><span class="line">def calc_union_set(hash_a, hash_b, intersection):</span><br><span class="line">    union_set = 0</span><br><span class="line"></span><br><span class="line">    for key in hash_a:</span><br><span class="line">        union_set = union_set + hash_a[key]</span><br><span class="line">    for key in hash_b:</span><br><span class="line">        union_set = union_set + hash_b[key]</span><br><span class="line"></span><br><span class="line">    return union_set - intersection</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#############################################</span><br><span class="line">#</span><br><span class="line"># 计算相似度</span><br><span class="line"># 输入：交集和并集</span><br><span class="line"># 输出：相似度</span><br><span class="line">#   </span><br><span class="line">#############################################</span><br><span class="line">def calc_similarity(intersection, union_set):</span><br><span class="line">    if (union_set &gt; 0):</span><br><span class="line">        return float(intersection) / float(union_set)</span><br><span class="line">    else:</span><br><span class="line">        return 0.0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#############################################</span><br><span class="line">#</span><br><span class="line"># 从某个文本文件获取一个集合，该集合保存了文本中单词的出现频率</span><br><span class="line"># 输入：文件名，k值,默认为5</span><br><span class="line"># 输出：一个词频的hash表</span><br><span class="line">#</span><br><span class="line">#############################################</span><br><span class="line">def get_hash_info_from_file(file_name, k=5):</span><br><span class="line">    content = read_file(file_name)</span><br><span class="line">    content_list = split_contents(content, k)</span><br><span class="line">    hash_content = hash_contents_list(content_list)</span><br><span class="line">    return hash_content</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#############################################</span><br><span class="line">#</span><br><span class="line"># 获取文件列表</span><br><span class="line"># 输入：目录名</span><br><span class="line"># 输出：文件列表，文件名列表</span><br><span class="line">#</span><br><span class="line">############################################# </span><br><span class="line">def collect_file_list(file_path):</span><br><span class="line">    print(&quot;获取文件列表....&quot;)</span><br><span class="line">    start = time.time()</span><br><span class="line">    file_name_list = []</span><br><span class="line">    file_names = []</span><br><span class="line">    for parent, dirnames, filenames in os.walk(file_path):</span><br><span class="line">        # print filenames</span><br><span class="line">        for file_name in filenames:</span><br><span class="line">            if (file_name[-4:] == &quot;.txt&quot;):</span><br><span class="line">                file_name_list.append(file_path + file_name)</span><br><span class="line">                file_names.append(file_name)</span><br><span class="line">    end = time.time()</span><br><span class="line">    print(&quot;获取文件列表结束，用时: &quot; + str(end - start) + u&quot;秒&quot;)</span><br><span class="line">    return file_name_list, file_names</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#############################################</span><br><span class="line">#</span><br><span class="line"># 获取每个文件词汇</span><br><span class="line"># 输入：文件列表</span><br><span class="line"># 输出：词汇表列表</span><br><span class="line">#</span><br><span class="line">############################################# </span><br><span class="line">def get_all_files_words_list(file_name_list, file_names, k=5):</span><br><span class="line">    print(&quot;获取每个文本的词汇词频表....&quot;)</span><br><span class="line">    start = time.time()</span><br><span class="line">    hash_contents = []</span><br><span class="line">    all = float(len(file_name_list))</span><br><span class="line">    pos = 0.0</span><br><span class="line">    pro = progressbar.ProgressBar().start()</span><br><span class="line">    # 获取每个文本的词汇词频表</span><br><span class="line">    for index, file_name in enumerate(file_name_list):</span><br><span class="line">        pos = pos + 1</span><br><span class="line">        rate_num = int(pos / all * 100)</span><br><span class="line">        pro.update(rate_num)</span><br><span class="line">        # time.sleep(0.1)</span><br><span class="line">        hash_contents.append([get_hash_info_from_file(file_name, k), file_names[index]])</span><br><span class="line"></span><br><span class="line">    pro.finish()</span><br><span class="line">    end = time.time()</span><br><span class="line">    print(&quot;获取每个文本的词汇词频表结束，用时: &quot; + str(end - start) + u&quot;秒&quot;)</span><br><span class="line">    return hash_contents</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#############################################</span><br><span class="line">#</span><br><span class="line"># 计算两两相似度</span><br><span class="line"># 输入：哈希数据列表</span><br><span class="line"># 输出：相似度数组</span><br><span class="line">#</span><br><span class="line">############################################# </span><br><span class="line">def calc_each_similar(hash_contents):</span><br><span class="line">    print(&quot;计算所有文本互相之间的相似度....&quot;)</span><br><span class="line">    start = time.time()</span><br><span class="line">    similar_list = []</span><br><span class="line">    all = float(len(hash_contents))</span><br><span class="line">    pos = 0.0</span><br><span class="line">    pro = progressbar.ProgressBar().start()</span><br><span class="line">    for index1, v1 in enumerate(hash_contents):</span><br><span class="line">        pos = pos + 1</span><br><span class="line">        rate_num = int(pos / all * 100)</span><br><span class="line">        pro.update(rate_num)</span><br><span class="line">        # time.sleep(0.1)</span><br><span class="line">        # print &quot;%02d&quot; % int(pos/all*100),</span><br><span class="line">        for index2, v2 in enumerate(hash_contents):</span><br><span class="line">            if (v1[1] != v2[1] and index2 &gt; index1):</span><br><span class="line">                intersection = calc_intersection(v1[0], v2[0])  # 计算交集</span><br><span class="line">                union_set = calc_union_set(v1[0], v2[0], intersection)  # 计算并集</span><br><span class="line">                similar = calc_similarity(intersection, union_set)</span><br><span class="line">                similar_list.append([similar, v1[1], v2[1]])</span><br><span class="line">                # print v1[1]+ &quot;||||||&quot; + v2[1] + &quot; similarity is : &quot; + str(calcSimilarity(intersection,union_set)) #计算相似度</span><br><span class="line">    pro.finish()</span><br><span class="line">    similar_list.sort()</span><br><span class="line">    similar_list.reverse()</span><br><span class="line">    end = time.time()</span><br><span class="line">    print(&quot;计算所有文本互相之间的相似度结束，用时: &quot; + str(end - start) + u&quot;秒&quot;)</span><br><span class="line">    return similar_list</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#############################################</span><br><span class="line">#</span><br><span class="line"># 主程序</span><br><span class="line"># 输入:路径和k-shingle中的k值</span><br><span class="line"># 输出:两两相似度数组</span><br><span class="line">#</span><br><span class="line">#############################################</span><br><span class="line">def calc_similarity_by_words(file_path, k=5):</span><br><span class="line">    # 获取文件列表</span><br><span class="line">    file_name_list, file_names = collect_file_list(file_path)</span><br><span class="line">    # 获取每个文件词汇</span><br><span class="line">    hash_contents = get_all_files_words_list(file_name_list, file_names, k)</span><br><span class="line">    # 计算文件的相似度</span><br><span class="line">    res = calc_each_similar(hash_contents)</span><br><span class="line">    return res</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(calc_similarity_by_words(&quot;G:\\temp\\&quot;))</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+  </article>
+  <div class="toc-container">
+    
+
+  </div>
+</div>
+<div class="copyright">
+    <span>本作品采用</span>
+    <a href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<div class="share">
+
+</div>
+  
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2018/05/24/个人文档记录/" rel="next" title="个人文档记录">
+          个人文档记录
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2018/07/04/Funny-Website/" rel="prev" title="Funny Website">
+            Funny Website
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="https://blog.fomeiherz.top">首页</a> |
+        <a class="bottom-item" href="https://blog.fomeiherz.top" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/fomeiherz" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a> | 
+        <a class="bottom-item" href="https://github.com/microacup/hexo-theme-micorb" target="_blank">Theme micorb</a>
+    </div>
+</footer>
+
+  
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+
+  
+
+
+
+</body>
+</html>

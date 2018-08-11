@@ -17,11 +17,11 @@
   
 
   
-    <meta name="description" content="spring-cloud-start" />
+    <meta name="description" content="Spring Cloud 整体架构设计介绍" />
   
   
   <link rel="icon" type="image/x-icon" href="/logo.png">
-  <title>spring-cloud-start</title>
+  <title>Spring Cloud 整体架构设计介绍</title>
   
     <!-- stylesheets list from config.yml -->
     
@@ -38,7 +38,7 @@
     <nav class="home-menu pure-menu pure-menu-horizontal">
   <a class="pure-menu-heading" href="/">
     <img class="avatar" src="https://blog.fomeiherz.top/images/logo.png">
-    <span class="title">沉睡的狮子</span>
+    <span class="title">一叶知秋的博客</span>
   </a>
 
   <ul class="pure-menu-list clearfix">
@@ -60,7 +60,7 @@
           
       
           
-            <li class="pure-menu-item"><a href="" class="pure-menu-link">关于</a></li>
+            <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
           
       
   </ul>
@@ -75,7 +75,7 @@
   <article class="post" id="post">
     <header class="post-header text-center">
       <h1 class="title">
-        spring-cloud-start
+        Spring Cloud 整体架构设计介绍
       </h1>
       <span>
         
@@ -99,12 +99,13 @@
 
     <div class="post-content">
       <p>Spring Cloud 包含组件：Eureka、Ribbon、Hystrix、Zuul、Spring-Cloud-Config</p>
-<h3 id="Eureka服务注册与发现"><a href="#Eureka服务注册与发现" class="headerlink" title="Eureka服务注册与发现"></a>Eureka服务注册与发现</h3><p>注册中心。</p>
-<h3 id="Ribbon服务调用端负载均衡"><a href="#Ribbon服务调用端负载均衡" class="headerlink" title="Ribbon服务调用端负载均衡"></a>Ribbon服务调用端负载均衡</h3><p>负责负载均衡的计算。</p>
-<h3 id="Hystrix服务调用端熔断"><a href="#Hystrix服务调用端熔断" class="headerlink" title="Hystrix服务调用端熔断"></a>Hystrix服务调用端熔断</h3><p>Hystrix熔断机制，每一个微服务都有熔断处理。</p>
-<h3 id="Zuul代理机制"><a href="#Zuul代理机制" class="headerlink" title="Zuul代理机制"></a>Zuul代理机制</h3><p>路由规则（路径映射），对名称进行隐藏。</p>
-<h3 id="Spring-Cloud-Config服务配置组件"><a href="#Spring-Cloud-Config服务配置组件" class="headerlink" title="Spring Cloud Config服务配置组件"></a>Spring Cloud Config服务配置组件</h3><p>基于git进行配置的管理。</p>
-<h3 id="Zipkin链路跟踪工具"><a href="#Zipkin链路跟踪工具" class="headerlink" title="Zipkin链路跟踪工具"></a>Zipkin链路跟踪工具</h3><p>作用是监控微服务集群中调用链路的通畅情况。</p>
+<p>Spring Cloud 微服务架构图，如下图所示。<br><img src="http://p7240jy2w.bkt.clouddn.com/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E6%80%BB%E5%9B%BE.jpg" alt="avata"></p>
+<h4 id="Eureka服务注册与发现"><a href="#Eureka服务注册与发现" class="headerlink" title="Eureka服务注册与发现"></a>Eureka服务注册与发现</h4><p>注册中心。</p>
+<h4 id="Ribbon服务调用端负载均衡"><a href="#Ribbon服务调用端负载均衡" class="headerlink" title="Ribbon服务调用端负载均衡"></a>Ribbon服务调用端负载均衡</h4><p>负责负载均衡的计算。</p>
+<h4 id="Hystrix服务调用端熔断"><a href="#Hystrix服务调用端熔断" class="headerlink" title="Hystrix服务调用端熔断"></a>Hystrix服务调用端熔断</h4><p>Hystrix熔断机制，每一个微服务都有熔断处理。</p>
+<h4 id="Zuul代理机制"><a href="#Zuul代理机制" class="headerlink" title="Zuul代理机制"></a>Zuul代理机制</h4><p>路由规则（路径映射），对名称进行隐藏。</p>
+<h4 id="Spring-Cloud-Config服务配置组件"><a href="#Spring-Cloud-Config服务配置组件" class="headerlink" title="Spring Cloud Config服务配置组件"></a>Spring Cloud Config服务配置组件</h4><p>基于git进行配置的管理。</p>
+<h4 id="Zipkin链路跟踪工具"><a href="#Zipkin链路跟踪工具" class="headerlink" title="Zipkin链路跟踪工具"></a>Zipkin链路跟踪工具</h4><p>作用是监控微服务集群中调用链路的通畅情况。</p>
 
     </div>
 
@@ -113,7 +114,7 @@
     
   <div id="toc" class="toc-article">
     <strong class="toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Eureka服务注册与发现"><span class="toc-text">Eureka服务注册与发现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ribbon服务调用端负载均衡"><span class="toc-text">Ribbon服务调用端负载均衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hystrix服务调用端熔断"><span class="toc-text">Hystrix服务调用端熔断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Zuul代理机制"><span class="toc-text">Zuul代理机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Cloud-Config服务配置组件"><span class="toc-text">Spring Cloud Config服务配置组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Zipkin链路跟踪工具"><span class="toc-text">Zipkin链路跟踪工具</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Eureka服务注册与发现"><span class="toc-text">Eureka服务注册与发现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ribbon服务调用端负载均衡"><span class="toc-text">Ribbon服务调用端负载均衡</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Hystrix服务调用端熔断"><span class="toc-text">Hystrix服务调用端熔断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Zuul代理机制"><span class="toc-text">Zuul代理机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring-Cloud-Config服务配置组件"><span class="toc-text">Spring Cloud Config服务配置组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Zipkin链路跟踪工具"><span class="toc-text">Zipkin链路跟踪工具</span></a></li></ol>
   </div>
 
 
@@ -140,6 +141,11 @@
   
       <div class="post-nav-item post-nav-prev">
           
+          <a href="/2018/05/04/Hexo博客添加站内搜索页/" rel="prev" title="Hexo博客添加站内搜索页">
+            Hexo博客添加站内搜索页
+          </a>
+          <span>〉</span>
+        
       </div>
     </div>
   
