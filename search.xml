@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Python3 + MySql: No module named 'MySQLdb']]></title>
+    <title><![CDATA[Python3 + Centos7: No module named 'MySQLdb']]></title>
     <url>%2F2019%2F03%2F19%2FNo-module-named-MySQLdb%2F</url>
     <content type="text"><![CDATA[12sudo yum install mariadb-devel sudo pip3 install mysqlclient]]></content>
   </entry>
