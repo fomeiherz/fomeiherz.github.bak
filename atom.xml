@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.fomeiherz.top/"/>
-  <updated>2018-07-07T17:01:35.877Z</updated>
+  <updated>2019-03-19T09:47:32.479Z</updated>
   <id>https://blog.fomeiherz.top/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python3 + MySql   No module named &#39;MySQLdb&#39;</title>
+    <link href="https://blog.fomeiherz.top/2019/03/19/No-module-named-MySQLdb/"/>
+    <id>https://blog.fomeiherz.top/2019/03/19/No-module-named-MySQLdb/</id>
+    <published>2019-03-19T09:35:08.000Z</published>
+    <updated>2019-03-19T09:47:32.479Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install mariadb-devel  </span><br><span class="line">sudo pip3 install mysqlclient</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Apriori Algorithm</title>
@@ -469,31 +490,6 @@
       <category term="go" scheme="https://blog.fomeiherz.top/tags/go/"/>
     
       <category term="入门" scheme="https://blog.fomeiherz.top/tags/%E5%85%A5%E9%97%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用IntelliJ IDEA + Go插件快速搭建第一个Web程序</title>
-    <link href="https://blog.fomeiherz.top/2018/05/01/idea-go-plugin-with-web/"/>
-    <id>https://blog.fomeiherz.top/2018/05/01/idea-go-plugin-with-web/</id>
-    <published>2018-05-01T02:11:37.000Z</published>
-    <updated>2018-05-02T08:43:15.565Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="配置golang环境"><a href="#配置golang环境" class="headerlink" title="配置golang环境"></a>配置golang环境</h4><h5 id="配置本地仓库"><a href="#配置本地仓库" class="headerlink" title="配置本地仓库"></a>配置本地仓库</h5><p>本地新建一个仓库：E:\go\Repository\src<br>配置GOPATH路径为：E:\go\Repository（注意：不用配置 \src）</p><h5 id="配置项目路径"><a href="#配置项目路径" class="headerlink" title="配置项目路径"></a>配置项目路径</h5><p>本地新建项目路径：E:\work_golang\src<br>配置GOPATH路径为：E:\work_golang（注意：不用配置 \src）<br>作用：配置了该路径项目才可以引用本地的包。</p><h4 id="IntelliJ-IDEA安装Golang插件"><a href="#IntelliJ-IDEA安装Golang插件" class="headerlink" title="IntelliJ IDEA安装Golang插件"></a>IntelliJ IDEA安装Golang插件</h4><p>注：可能低版本的IDEA不支持该插件，需要安装更新版本才能搜索到这个插件。<br><a href="https://www.jianshu.com/p/7449b16700bc" target="_blank" rel="noopener">IDEA安装Go插件</a></p><h4 id="创建第一个Web项目"><a href="#创建第一个Web项目" class="headerlink" title="创建第一个Web项目"></a>创建第一个Web项目</h4><h5 id="环境描述"><a href="#环境描述" class="headerlink" title="环境描述"></a>环境描述</h5><ul><li>Windows 7</li><li>IntelliJ IDEA 2018.03</li></ul><h5 id="IDEA创建项目"><a href="#IDEA创建项目" class="headerlink" title="IDEA创建项目"></a>IDEA创建项目</h5><p>第一步：<a href="https://blog.csdn.net/u011225266/article/details/54407561" target="_blank" rel="noopener">创建一个Go项目</a><br>第二步：<a href="https://github.com/Unknwon/the-way-to-go_ZH_CN/blob/master/eBook/15.2.md" target="_blank" rel="noopener">把项目代码替换成Web程序代码</a><br>第三步：访问地址 <a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a> 查看结果即可</p><h4 id="部署程序"><a href="#部署程序" class="headerlink" title="部署程序"></a>部署程序</h4><h5 id="Windows打包linux程序"><a href="#Windows打包linux程序" class="headerlink" title="Windows打包linux程序"></a>Windows打包linux程序</h5><p>参考链接：<a href="https://blog.csdn.net/panshiqu/article/details/53788067" target="_blank" rel="noopener">https://blog.csdn.net/panshiqu/article/details/53788067</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SET CGO_ENABLED=0</span><br><span class="line">SET GOOS=linux</span><br><span class="line">SET GOARCH=amd64</span><br><span class="line">go build -o &lt;out_file&gt; &lt;main_file&gt;</span><br></pre></td></tr></table></figure></p><h5 id="linux安装Go环境"><a href="#linux安装Go环境" class="headerlink" title="linux安装Go环境"></a>linux安装Go环境</h5><p>参考链接：<a href="https://medium.com/@patdhlk/how-to-install-go-1-9-1-on-ubuntu-16-04-ee64c073cd79" target="_blank" rel="noopener">https://medium.com/@patdhlk/how-to-install-go-1-9-1-on-ubuntu-16-04-ee64c073cd79</a></p><h5 id="linux修改为可执行文件"><a href="#linux修改为可执行文件" class="headerlink" title="linux修改为可执行文件"></a>linux修改为可执行文件</h5><p>chmod +x &lt;file_name&gt;</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;配置golang环境&quot;&gt;&lt;a href=&quot;#配置golang环境&quot; class=&quot;headerlink&quot; title=&quot;配置golang环境&quot;&gt;&lt;/a&gt;配置golang环境&lt;/h4&gt;&lt;h5 id=&quot;配置本地仓库&quot;&gt;&lt;a href=&quot;#配置本地仓库&quot; class=&quot;
-      
-    
-    </summary>
-    
-    
-      <category term="golang" scheme="https://blog.fomeiherz.top/tags/golang/"/>
-    
-      <category term="go" scheme="https://blog.fomeiherz.top/tags/go/"/>
     
   </entry>
   
