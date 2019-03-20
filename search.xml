@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[How to use postman to bulk insert data in Elasticsearch]]></title>
+    <url>%2F2019%2F03%2F20%2FHow-to-use-postman-to-bulk-insert-data-in-Elasticsearch%2F</url>
+    <content type="text"><![CDATA[Request method: POSTHeaders: [“Content-Type”: “application/x-ndjson”]Body type: rawBody content format: Every json string must newline.]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Python3 + Centos7: No module named 'MySQLdb']]></title>
     <url>%2F2019%2F03%2F19%2FNo-module-named-MySQLdb%2F</url>
     <content type="text"><![CDATA[12sudo yum install mariadb-devel sudo pip3 install mysqlclient]]></content>
