@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[How to use postman to bulk insert data in Elasticsearch]]></title>
     <url>%2F2019%2F03%2F20%2FHow-to-use-postman-to-bulk-insert-data-in-Elasticsearch%2F</url>
-    <content type="text"><![CDATA[Request method: POSTHeaders: [“Content-Type”: “application/x-ndjson”]Body type: rawBody content format: Every json string must newline.]]></content>
+    <content type="text"><![CDATA[Request method: POST Headers: [“Content-Type”: “application/x-ndjson”] Body type: raw Body content format: Every json string must newline.]]></content>
   </entry>
   <entry>
     <title><![CDATA[Python3 + Centos7: No module named 'MySQLdb']]></title>
