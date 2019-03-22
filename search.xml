@@ -158,7 +158,7 @@
   <entry>
     <title><![CDATA[使用IntelliJ IDEA + Go插件快速搭建第一个Web程序]]></title>
     <url>%2F2018%2F05%2F01%2Fidea-go-plugin-with-web%2F</url>
-    <content type="text"><![CDATA[配置golang环境配置本地仓库本地新建一个仓库：E:\go\Repository\src配置GOPATH路径为：E:\go\Repository（注意：不用配置 \src） 配置项目路径本地新建项目路径：E:\work_golang\src配置GOPATH路径为：E:\work_golang（注意：不用配置 \src）作用：配置了该路径项目才可以引用本地的包。 IntelliJ IDEA安装Golang插件注：可能低版本的IDEA不支持该插件，需要安装更新版本才能搜索到这个插件。IDEA安装Go插件 创建第一个Web项目环境描述 Windows 7 IntelliJ IDEA 2018.03 IDEA创建项目第一步：创建一个Go项目第二步：把项目代码替换成Web程序代码第三步：访问地址 http://localhost:8080/ 查看结果即可 部署程序Windows打包linux程序参考链接：https://blog.csdn.net/panshiqu/article/details/537880671234SET CGO_ENABLED=0SET GOOS=linuxSET GOARCH=amd64go build -o &lt;out_file&gt; &lt;main_file&gt; linux安装Go环境参考链接：https://medium.com/@patdhlk/how-to-install-go-1-9-1-on-ubuntu-16-04-ee64c073cd79 linux修改为可执行文件chmod +x &lt;file_name&gt; linux后台运行go程序1nohup ./moment &amp;]]></content>
+    <content type="text"><![CDATA[配置golang环境配置本地仓库本地新建一个仓库：E:\go\Repository\src配置GOPATH路径为：E:\go\Repository（注意：不用配置 \src） 配置项目路径本地新建项目路径：E:\work_golang\src配置GOPATH路径为：E:\work_golang（注意：不用配置 \src）作用：配置了该路径项目才可以引用本地的包。 IntelliJ IDEA安装Golang插件注：可能低版本的IDEA不支持该插件，需要安装更新版本才能搜索到这个插件。IDEA安装Go插件 创建第一个Web项目环境描述 Windows 7 IntelliJ IDEA 2018.03 IDEA创建项目第一步：创建一个Go项目第二步：把项目代码替换成Web程序代码第三步：访问地址 http://localhost:8080/ 查看结果即可 部署程序Windows打包linux程序参考链接：https://blog.csdn.net/panshiqu/article/details/537880671234SET CGO_ENABLED=0SET GOOS=linuxSET GOARCH=amd64go build -o &lt;out_file&gt; &lt;main_file&gt; linux安装Go环境参考链接：https://medium.com/@patdhlk/how-to-install-go-1-9-1-on-ubuntu-16-04-ee64c073cd79 linux修改为可执行文件1chmod +x &lt;file_name&gt; linux后台运行go程序1nohup ./moment &amp;]]></content>
       <tags>
         <tag>golang</tag>
         <tag>go</tag>
