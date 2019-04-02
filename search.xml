@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[@Cache缓存设计的流程]]></title>
+    <url>%2F2019%2F04%2F02%2Fcache-annotation-design%2F</url>
+    <content type="text"><![CDATA[流程图如下：]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[How to use postman to bulk insert data in Elasticsearch]]></title>
     <url>%2F2019%2F03%2F20%2FHow-to-use-postman-to-bulk-insert-data-in-Elasticsearch%2F</url>
     <content type="text"><![CDATA[Request method: POST Headers: [“Content-Type”: “application/x-ndjson”] Body type: raw Body content format: Every json String must newline. And per-line json String must has no space. Body content example:1234&#123;&quot;index&quot;:&#123;&quot;_index&quot;:&quot;schools_&quot;,&quot;_type&quot;:&quot;school&quot;,&quot;_id&quot;:&quot;1&quot;&#125;&#125;&#123;&quot;name&quot;:&quot;Model School&quot;,&quot;description&quot;:&quot;CBSE Affiliation&quot;,&quot;street&quot;:&quot;silk city&quot;,&quot;city&quot;:&quot;Hyderabad&quot;,&quot;state&quot;:&quot;AP&quot;,&quot;zip&quot;:&quot;500030&quot;,&quot;location&quot;:[17.3903703,78.4752129],&quot;fees&quot;:200,&quot;tags&quot;:[&quot;Senior Secondary&quot;,&quot;beautiful campus&quot;],&quot;rating&quot;:&quot;3&quot;&#125;&#123;&quot;index&quot;:&#123;&quot;_index&quot;:&quot;schools_&quot;,&quot;_type&quot;:&quot;school&quot;,&quot;_id&quot;:&quot;2&quot;&#125;&#125;&#123;&quot;name&quot;:&quot;Government School&quot;,&quot;description&quot;:&quot;State Board Affiliation&quot;,&quot;street&quot;:&quot;Hinjewadi&quot;,&quot;city&quot;:&quot;Pune&quot;,&quot;state&quot;:&quot;MH&quot;,&quot;zip&quot;:&quot;411057&quot;,&quot;location&quot;:[18.599752,73.6821995],&quot;fees&quot;:500,&quot;tags&quot;:[&quot;Great Sports&quot;],&quot;rating&quot;:&quot;4&quot;&#125; This is an example, click to download and import to postman: Postman export example]]></content>

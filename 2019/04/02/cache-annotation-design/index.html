@@ -17,11 +17,11 @@
   
 
   
-    <meta name="description" content="How to use postman to bulk insert data in Elasticsearch" />
+    <meta name="description" content="@Cache缓存设计的流程" />
   
   
   <!-- <link rel="icon" type="image/x-icon" href="/logo.png"> -->
-  <title>How to use postman to bulk insert data in Elasticsearch</title>
+  <title>@Cache缓存设计的流程</title>
   
     <!-- stylesheets list from config.yml -->
     
@@ -75,12 +75,12 @@
   <article class="post" id="post">
     <header class="post-header text-center">
       <h1 class="title">
-        How to use postman to bulk insert data in Elasticsearch
+        @Cache缓存设计的流程
       </h1>
       <span>
         
-        <time class="time" datetime="2019-03-20T05:08:42.000Z">
-        2019-03-20
+        <time class="time" datetime="2019-04-02T11:24:40.000Z">
+        2019-04-02
       </time>
         
       </span>
@@ -98,15 +98,7 @@
     </header>
 
     <div class="post-content">
-      <ul>
-<li>Request method: POST</li>
-<li>Headers: [“Content-Type”: “application/x-ndjson”]</li>
-<li>Body type: raw</li>
-<li>Body content format: Every json String must newline. And per-line json String must has no space.</li>
-<li>Body content example:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;index&quot;:&#123;&quot;_index&quot;:&quot;schools_&quot;,&quot;_type&quot;:&quot;school&quot;,&quot;_id&quot;:&quot;1&quot;&#125;&#125;</span><br><span class="line">&#123;&quot;name&quot;:&quot;Model School&quot;,&quot;description&quot;:&quot;CBSE Affiliation&quot;,&quot;street&quot;:&quot;silk city&quot;,&quot;city&quot;:&quot;Hyderabad&quot;,&quot;state&quot;:&quot;AP&quot;,&quot;zip&quot;:&quot;500030&quot;,&quot;location&quot;:[17.3903703,78.4752129],&quot;fees&quot;:200,&quot;tags&quot;:[&quot;Senior Secondary&quot;,&quot;beautiful campus&quot;],&quot;rating&quot;:&quot;3&quot;&#125;</span><br><span class="line">&#123;&quot;index&quot;:&#123;&quot;_index&quot;:&quot;schools_&quot;,&quot;_type&quot;:&quot;school&quot;,&quot;_id&quot;:&quot;2&quot;&#125;&#125;</span><br><span class="line">&#123;&quot;name&quot;:&quot;Government School&quot;,&quot;description&quot;:&quot;State Board Affiliation&quot;,&quot;street&quot;:&quot;Hinjewadi&quot;,&quot;city&quot;:&quot;Pune&quot;,&quot;state&quot;:&quot;MH&quot;,&quot;zip&quot;:&quot;411057&quot;,&quot;location&quot;:[18.599752,73.6821995],&quot;fees&quot;:500,&quot;tags&quot;:[&quot;Great Sports&quot;],&quot;rating&quot;:&quot;4&quot;&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>This is an example, click to download and import to postman: <a href="http://sharefile.fomeiherz.top/blog/es_example.postman_collection.json" title="Postman export example" target="_blank" rel="noopener">Postman export example</a></p>
+      <p>流程图如下：<br><img src="http://sharefile.fomeiherz.top/image/@Cache%20design.jpg" alt="avatar"></p>
 
     </div>
 
@@ -129,19 +121,14 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2019/03/19/No-module-named-MySQLdb/" rel="next" title="Python3 + Centos7: No module named &#39;MySQLdb&#39;">
-          Python3 + Centos7: No module named &#39;MySQLdb&#39;
+          <a href="/2019/03/20/How-to-use-postman-to-bulk-insert-data-in-Elasticsearch/" rel="next" title="How to use postman to bulk insert data in Elasticsearch">
+          How to use postman to bulk insert data in Elasticsearch
           </a>
         
       </div>
   
       <div class="post-nav-item post-nav-prev">
           
-          <a href="/2019/04/02/cache-annotation-design/" rel="prev" title="@Cache缓存设计的流程">
-            @Cache缓存设计的流程
-          </a>
-          <span>〉</span>
-        
       </div>
     </div>
   
@@ -155,7 +142,7 @@
   <script>
     var disqus_shortname = 'fomeiherz';
     
-    var disqus_url = 'https://blog.fomeiherz.top/2019/03/20/How-to-use-postman-to-bulk-insert-data-in-Elasticsearch/';
+    var disqus_url = 'https://blog.fomeiherz.top/2019/04/02/cache-annotation-design/';
     
     (function(){
       var dsq = document.createElement('script');

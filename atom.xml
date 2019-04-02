@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.fomeiherz.top/"/>
-  <updated>2019-03-22T13:36:21.124Z</updated>
+  <updated>2019-04-02T11:27:06.471Z</updated>
   <id>https://blog.fomeiherz.top/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>@Cache缓存设计的流程</title>
+    <link href="https://blog.fomeiherz.top/2019/04/02/cache-annotation-design/"/>
+    <id>https://blog.fomeiherz.top/2019/04/02/cache-annotation-design/</id>
+    <published>2019-04-02T11:24:40.000Z</published>
+    <updated>2019-04-02T11:27:06.471Z</updated>
+    
+    <content type="html"><![CDATA[<p>流程图如下：<br><img src="http://sharefile.fomeiherz.top/image/@Cache%20design.jpg" alt="avatar"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;流程图如下：&lt;br&gt;&lt;img src=&quot;http://sharefile.fomeiherz.top/image/@Cache%20design.jpg&quot; alt=&quot;avatar&quot;&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>How to use postman to bulk insert data in Elasticsearch</title>
@@ -463,31 +485,6 @@
       <category term="sql server" scheme="https://blog.fomeiherz.top/tags/sql-server/"/>
     
       <category term="SQL" scheme="https://blog.fomeiherz.top/tags/SQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>golang的命名规范</title>
-    <link href="https://blog.fomeiherz.top/2018/05/02/golang%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/"/>
-    <id>https://blog.fomeiherz.top/2018/05/02/golang的命名规范/</id>
-    <published>2018-05-02T02:28:00.000Z</published>
-    <updated>2018-05-02T02:29:33.101Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="类"><a href="#类" class="headerlink" title="类"></a>类</h4><h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><p>公有函数的名字以大写字母开头；私有函数的名字以小写字母开头。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;类&quot;&gt;&lt;a href=&quot;#类&quot; class=&quot;headerlink&quot; title=&quot;类&quot;&gt;&lt;/a&gt;类&lt;/h4&gt;&lt;h4 id=&quot;变量&quot;&gt;&lt;a href=&quot;#变量&quot; class=&quot;headerlink&quot; title=&quot;变量&quot;&gt;&lt;/a&gt;变量&lt;/h4&gt;&lt;h4 id=&quot;函数
-      
-    
-    </summary>
-    
-    
-      <category term="goland" scheme="https://blog.fomeiherz.top/tags/goland/"/>
-    
-      <category term="命名规范" scheme="https://blog.fomeiherz.top/tags/%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/"/>
     
   </entry>
   
