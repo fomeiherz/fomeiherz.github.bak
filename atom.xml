@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.fomeiherz.top/"/>
-  <updated>2019-04-02T11:27:06.471Z</updated>
+  <updated>2019-04-02T11:29:30.674Z</updated>
   <id>https://blog.fomeiherz.top/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>@Lock缓存设计的流程</title>
+    <link href="https://blog.fomeiherz.top/2019/04/02/lock-annotation-design/"/>
+    <id>https://blog.fomeiherz.top/2019/04/02/lock-annotation-design/</id>
+    <published>2019-04-02T11:28:29.000Z</published>
+    <updated>2019-04-02T11:29:30.674Z</updated>
+    
+    <content type="html"><![CDATA[<p>流程图：<br><img src="http://sharefile.fomeiherz.top/image/@Lock%20design.jpg" alt="avatar"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;流程图：&lt;br&gt;&lt;img src=&quot;http://sharefile.fomeiherz.top/image/@Lock%20design.jpg&quot; alt=&quot;avatar&quot;&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>@Cache缓存设计的流程</title>
@@ -458,33 +480,6 @@
       <category term="C语言" scheme="https://blog.fomeiherz.top/tags/C%E8%AF%AD%E8%A8%80/"/>
     
       <category term="数据结构" scheme="https://blog.fomeiherz.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>T-SQL语法示例</title>
-    <link href="https://blog.fomeiherz.top/2018/05/02/T-SQL%E8%AF%AD%E6%B3%95%E7%A4%BA%E4%BE%8B/"/>
-    <id>https://blog.fomeiherz.top/2018/05/02/T-SQL语法示例/</id>
-    <published>2018-05-02T08:26:14.000Z</published>
-    <updated>2018-05-02T08:35:27.053Z</updated>
-    
-    <content type="html"><![CDATA[<h5 id="创建库"><a href="#创建库" class="headerlink" title="创建库"></a>创建库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;begin&gt;</span><br><span class="line">--创建数据库</span><br><span class="line">use master --使用SQL原有模板master进行创建</span><br><span class="line">go</span><br><span class="line"></span><br><span class="line">--创建一个名为yy_db的数据库，数据库命名最好添加_db</span><br><span class="line">create database yy_db </span><br><span class="line">--数据文件的具体描述</span><br><span class="line">on primary (</span><br><span class="line">    name=&apos;yy_db.mdf&apos;, --创建主文件名字，名字要与数据库名字一样</span><br><span class="line">    filename=&apos;D:\Twins\Database\File\yy_db.mdf&apos;, --保存路径</span><br><span class="line">    size=3MB, --初始文件大小</span><br><span class="line">    --maxsize=60MB,最大限制</span><br><span class="line">    filegrowth=1MB --空间不足时，自动增长</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">--日志文件的具体描述</span><br><span class="line">log on (</span><br><span class="line">    name=&apos;yy_db.ldf&apos;, --创建日志文件名字</span><br><span class="line">    filename=&apos;D:\Twins\Database\File\yy_db.ldf&apos;, --保存路径</span><br><span class="line">    size=1MB, --初始文件大小</span><br><span class="line">    filegrowth=10% --空间不足，自动增长</span><br><span class="line">)</span><br><span class="line">&lt;end&gt;</span><br></pre></td></tr></table></figure><h5 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">--指定插入表格的数据库</span><br><span class="line">use yy_db</span><br><span class="line">go</span><br><span class="line"></span><br><span class="line">--创建一个表格，表格名字应该带有_tb后缀</span><br><span class="line">create table info_tb(</span><br><span class="line">    --创建一个标识列和主键</span><br><span class="line">    Id int not null</span><br><span class="line">    identity(1,1)</span><br><span class="line">    constraint pk_info</span><br><span class="line">    primary key,</span><br><span class="line">    --创建一个唯一键，学生名字</span><br><span class="line">    Name nvarchar(20) not null</span><br><span class="line">        --属于约束之一，应该起个名字</span><br><span class="line">    constraint un_info </span><br><span class="line">    unique,  --唯一单词unique</span><br><span class="line">    --创建一个地址栏，默认是&quot;广州&quot;，允许为空</span><br><span class="line">    Address nvarchar(30) null</span><br><span class="line">        --属于默认约束，应该命名</span><br><span class="line">    constraint df_Address</span><br><span class="line">    default &apos;广州&apos;,</span><br><span class="line">    --创建一个Email邮箱的，允许为空</span><br><span class="line">    Email nvarchar(30) null</span><br><span class="line">        --属于约束中的一种，加上constraint</span><br><span class="line">    constraint ck_Email</span><br><span class="line">        --约束语句check(条件)</span><br><span class="line">    check(Email like &apos;%@%[.com .cn]&apos;)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">create table score_tb (</span><br><span class="line">    --表格名字一定要加_tb</span><br><span class="line">    id int not null</span><br><span class="line">    identity (1,1)</span><br><span class="line">    constraint pk_Id</span><br><span class="line">    primary key ,</span><br><span class="line">    --创建一个外键</span><br><span class="line">    infoId int not null</span><br><span class="line">        --命名外键名称</span><br><span class="line">    constraint fk_infoId</span><br><span class="line">        --创建外键foreign key references 表名(列名)</span><br><span class="line">        --引用是复数：references</span><br><span class="line">    foreign key references info_tb(id),</span><br><span class="line">    score float not null</span><br><span class="line">    --创建检查约束</span><br><span class="line">    constraint ck_score</span><br><span class="line">    check (score&gt;=0 and score&lt;=100),</span><br><span class="line">)</span><br></pre></td></tr></table></figure><h5 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">--插入(insert)单行数据</span><br><span class="line">insert into info_tb (Name,Address,Email)</span><br><span class="line">values (&apos;张三&apos;,default,&apos;123@qq.com&apos;)</span><br><span class="line"></span><br><span class="line">--插入多行数据（微软官网）</span><br><span class="line">insert into info_tb (Name,Address,Email)</span><br><span class="line">values (&apos;李四&apos;,&apos;杭州&apos;,&apos;2345@qq.com&apos;),</span><br><span class="line">    --逗号分隔，继续下一行数据</span><br><span class="line">(&apos;王五&apos;,&apos;武汉&apos;,&apos;3456@qq.com&apos;)</span><br></pre></td></tr></table></figure><h5 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--更改(update)数据</span><br><span class="line">update info_tb set Email=&apos;5678@qq.com&apos;</span><br><span class="line">where Email=&apos;123@qq.com&apos;</span><br></pre></td></tr></table></figure><h5 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--删除数据</span><br><span class="line">delete info_tb where Id=1</span><br></pre></td></tr></table></figure><h5 id="清空数据"><a href="#清空数据" class="headerlink" title="清空数据"></a>清空数据</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--清空数据(truncate table)</span><br><span class="line">truncate table score_tb</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h5 id=&quot;创建库&quot;&gt;&lt;a href=&quot;#创建库&quot; class=&quot;headerlink&quot; title=&quot;创建库&quot;&gt;&lt;/a&gt;创建库&lt;/h5&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;s
-      
-    
-    </summary>
-    
-    
-      <category term="T-SQL" scheme="https://blog.fomeiherz.top/tags/T-SQL/"/>
-    
-      <category term="sql server" scheme="https://blog.fomeiherz.top/tags/sql-server/"/>
-    
-      <category term="SQL" scheme="https://blog.fomeiherz.top/tags/SQL/"/>
     
   </entry>
   

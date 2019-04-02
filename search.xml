@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[@Lock缓存设计的流程]]></title>
+    <url>%2F2019%2F04%2F02%2Flock-annotation-design%2F</url>
+    <content type="text"><![CDATA[流程图：]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[@Cache缓存设计的流程]]></title>
     <url>%2F2019%2F04%2F02%2Fcache-annotation-design%2F</url>
     <content type="text"><![CDATA[流程图如下：]]></content>
