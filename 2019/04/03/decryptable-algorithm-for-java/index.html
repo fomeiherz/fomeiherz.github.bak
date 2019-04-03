@@ -17,11 +17,11 @@
   
 
   
-    <meta name="description" content="@Lock缓存设计的流程" />
+    <meta name="description" content="Decryptable algorithm for java" />
   
   
   <!-- <link rel="icon" type="image/x-icon" href="/logo.png"> -->
-  <title>@Lock缓存设计的流程</title>
+  <title>Decryptable algorithm for java</title>
   
     <!-- stylesheets list from config.yml -->
     
@@ -75,12 +75,12 @@
   <article class="post" id="post">
     <header class="post-header text-center">
       <h1 class="title">
-        @Lock缓存设计的流程
+        Decryptable algorithm for java
       </h1>
       <span>
         
-        <time class="time" datetime="2019-04-02T11:28:29.000Z">
-        2019-04-02
+        <time class="time" datetime="2019-04-03T08:23:40.000Z">
+        2019-04-03
       </time>
         
       </span>
@@ -98,7 +98,7 @@
     </header>
 
     <div class="post-content">
-      <p>流程图：<br><img src="http://sharefile.fomeiherz.top/image/@Lock%20design.jpg" alt="avatar"></p>
+      <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">public class CrypToUtils &#123;</span><br><span class="line"></span><br><span class="line">    private static final String UNICODE_FORMAT = &quot;UTF8&quot;;</span><br><span class="line">    public static final String DESEDE_ENCRYPTION_SCHEME = &quot;DESede&quot;;</span><br><span class="line">    private KeySpec ks;</span><br><span class="line">    private SecretKeyFactory skf;</span><br><span class="line">    private Cipher cipher;</span><br><span class="line">    byte[] arrayBytes;</span><br><span class="line">    private String myEncryptionKey;</span><br><span class="line">    private String myEncryptionScheme;</span><br><span class="line">    SecretKey key;</span><br><span class="line"></span><br><span class="line">    public CrypToUtils() throws Exception &#123;</span><br><span class="line">        myEncryptionKey = &quot;kOkzc^qxwJXiUvXvoaps$a3#&quot;;</span><br><span class="line">        myEncryptionScheme = DESEDE_ENCRYPTION_SCHEME;</span><br><span class="line">        arrayBytes = myEncryptionKey.getBytes(UNICODE_FORMAT);</span><br><span class="line">        ks = new DESedeKeySpec(arrayBytes);</span><br><span class="line">        skf = SecretKeyFactory.getInstance(myEncryptionScheme);</span><br><span class="line">        cipher = Cipher.getInstance(myEncryptionScheme);</span><br><span class="line">        key = skf.generateSecret(ks);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public String fixKeyEncode(String unencryptedString) &#123;</span><br><span class="line">        String encryptedString = null;</span><br><span class="line">        try &#123;</span><br><span class="line">            cipher.init(Cipher.ENCRYPT_MODE, key);</span><br><span class="line">            byte[] plainText = unencryptedString.getBytes(UNICODE_FORMAT);</span><br><span class="line">            byte[] encryptedText = cipher.doFinal(plainText);</span><br><span class="line">            encryptedString = new String(Base64.encodeBase64(encryptedText));</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return encryptedString;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String fixKeyDecode(String encryptedString) &#123;</span><br><span class="line">        String decryptedText=null;</span><br><span class="line">        try &#123;</span><br><span class="line">            cipher.init(Cipher.DECRYPT_MODE, key);</span><br><span class="line">            byte[] encryptedText = Base64.decodeBase64(encryptedString);</span><br><span class="line">            byte[] plainText = cipher.doFinal(encryptedText);</span><br><span class="line">            decryptedText= new String(plainText);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return decryptedText;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        CrypToUtils td= new CrypToUtils();</span><br><span class="line"></span><br><span class="line">        String target=&quot;16&quot;;</span><br><span class="line">        String encrypted=td.fixKeyEncode(target);</span><br><span class="line">        String decrypted=td.fixKeyDecode(encrypted);</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;String To Encrypt: &quot;+ target);</span><br><span class="line">        System.out.println(&quot;Encrypted String:&quot; + encrypted);</span><br><span class="line">        System.out.println(&quot;Decrypted String:&quot; + decrypted);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -121,19 +121,14 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2019/04/02/cache-annotation-design/" rel="next" title="@Cache缓存设计的流程">
-          @Cache缓存设计的流程
+          <a href="/2019/04/02/lock-annotation-design/" rel="next" title="@Lock缓存设计的流程">
+          @Lock缓存设计的流程
           </a>
         
       </div>
   
       <div class="post-nav-item post-nav-prev">
           
-          <a href="/2019/04/03/decryptable-algorithm-for-java/" rel="prev" title="Decryptable algorithm for java">
-            Decryptable algorithm for java
-          </a>
-          <span>〉</span>
-        
       </div>
     </div>
   
@@ -147,7 +142,7 @@
   <script>
     var disqus_shortname = 'fomeiherz';
     
-    var disqus_url = 'https://blog.fomeiherz.top/2019/04/02/lock-annotation-design/';
+    var disqus_url = 'https://blog.fomeiherz.top/2019/04/03/decryptable-algorithm-for-java/';
     
     (function(){
       var dsq = document.createElement('script');
